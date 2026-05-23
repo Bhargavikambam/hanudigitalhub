@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="portfolio-hero">
+
+    <div class="portfolio-title">
+        <h1>Building Ideas Into Reality</h1>
+        <p>
+            I design and develop modern, responsive web applications with clean UI and strong user experience. <br>
+            Focused on turning creative ideas into functional and scalable digital products.
+        </p>
+    </div>
+
+</section>
+
+<section class="portfolio-section">
+
+    <div class="portfolio-container">
+
+        <!-- EMART PROJECT -->
+        <div class="portfolio-card" data-aos="zoom-in">
+
+            <div class="scroll-images">
+                <img src="{% static 'images/a1.png' %}" alt="">
+                <img src="{% static 'images/a2.png' %}" alt="">
+                <img src="{% static 'images/a3.png' %}" alt="">
+                <img src="{% static 'images/a4.png' %}" alt="">
+                <img src="{% static 'images/a5.png' %}" alt="">
+            </div>
+
+            <div class="project-content">
+                <h3>Emart (React E-Commerce)</h3>
+
+                <p>
+                    Amazon-like React frontend shopping UI project with modern design and smooth user experience.
+                </p>
+
+                <a href="https://bhargavikambam.github.io/Emart/" target="_blank">
+                    🚀 Live Demo
+                </a>
+            </div>
+
+        </div>
+
+        <!-- GREEN BAG PROJECT -->
+        <div class="portfolio-card" data-aos="zoom-in">
+
+            <div class="scroll-images">
+                <img src="{% static 'images/b1.png' %}" alt="">
+                <img src="{% static 'images/b2.png' %}" alt="">
+                <img src="{% static 'images/b3.png' %}" alt="">
+                <img src="{% static 'images/b4.png' %}" alt="">
+                <img src="{% static 'images/b5.png' %}" alt="">
+            </div>
+
+            <div class="project-content">
+                <h3>Green Bag (E-Commerce)</h3>
+
+                <p>
+                    Django full-stack e-commerce website with cart system, authentication and product management.
+                </p>
+
+                <a href="https://greenbag-7anb.onrender.com/" target="_blank">
+                    🚀 Live Demo
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

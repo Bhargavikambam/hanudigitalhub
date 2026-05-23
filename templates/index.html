@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-content" data-aos="fade-up">
+
+        <h1 data-aos="zoom-in" data-aos-delay="100">
+            Build Modern Websites
+        </h1>
+
+        <p data-aos="fade-up" data-aos-delay="200">
+            We create modern, responsive and business-focused websites for startups and brands.
+        </p> <br>
+        <a href="{% url 'contact' %}" class="hero-btn">Get Started</a>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+
+    <h2 data-aos="fade-right">About Us</h2>
+
+    <p data-aos="fade-left">
+        Hanu Digital Hub specializes in creating clean, modern and mobile-friendly websites
+        for businesses, startups and personal brands.
+    </p>
+
+</section>
+
+
+<!-- CTA SECTION -->
+<section class="cta">
+    <h2>Ready to grow your business?</h2>
+    <a href="{% url 'contact' %}" class="hero-btn">Contact Us</a></section>
+
+{% endblock %}
