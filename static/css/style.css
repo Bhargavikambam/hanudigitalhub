@@ -242,23 +242,24 @@ body {
 }
 
 .service-container {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    gap: 30px;
     max-width: 1100px;
-    margin: auto;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
 /* ================= SERVICE CARD ================= */
-.service-card {
-    background: #1f2937;
-    padding: 35px 25px;
-    border-radius: 15px;
-    text-align: center;
-
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
+.service-card{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    width:300px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
 /* Hover Glow Effect */
@@ -270,10 +271,11 @@ body {
 
 /* ICON STYLE */
 .service-card .icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
+    font-size: 50px;
+    margin-bottom: 20px;
+    color:#007bff;
 
+}
 /* TITLE */
 .service-card h3 {
     font-size: 22px;
@@ -332,119 +334,102 @@ body {
 }
 
 /* ================= PORTFOLIO SECTION ================= */
-.portfolio-section {
-    padding: 50px 20px;
-    background: #111827;
-}
-
-.portfolio-container {
+.portfolio-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: auto;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    gap: 40px;
+    padding: 50px 8%;
 }
 
-/* ================= CARD ================= */
-/* IMAGE SCROLL CONTAINER */
-.scroll-images{
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 10px;
-
-    scrollbar-width: none; /* Firefox */
-}
-
-.scroll-images::-webkit-scrollbar{
-    display: none; /* Chrome */
-}
-
-/* EACH IMAGE */
-.scroll-images img{
-    min-width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 12px;
-
-    scroll-snap-align: start;
-    transition: 0.3s;
-}
-
-/* CARD */
 .portfolio-card{
     background: #111827;
-    border-radius: 15px;
-    padding: 10px;
-    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: 0.4s;
 }
 
-/* HOVER ZOOM */
-.portfolio-card:hover img {
-    transform: scale(1.1);
+.portfolio-card:hover{
+    transform: translateY(-8px);
 }
 
-/* OVERLAY */
-.overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    background: rgba(15, 23, 42, 0.8);
-    color: white;
+.project-images{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     padding: 15px;
-
-    transform: translateY(100%);
-    transition: 0.4s ease;
 }
 
-/* SHOW ON HOVER */
-.portfolio-card:hover .overlay {
-    transform: translateY(0);
+.project-images img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
 }
-
-/* TEXT */
-.overlay h3 {
-    font-size: 18px;
-    color: #38bdf8;
-}
-/* ================= PROJECT CONTENT ================= */
 
 .project-content{
-    padding: 15px;
+    padding: 25px;
 }
 
 .project-content h3{
-    font-size: 20px;
-    font-weight: 700;
-    color: #38bdf8;
-    margin-bottom: 10px;
-}
-
-.project-content p{
-    font-size: 14px;
-    color: #cbd5e1;
-    line-height: 1.6;
+    color: white;
+    font-size: 28px;
     margin-bottom: 15px;
 }
 
-/* LIVE DEMO BUTTON */
-.project-content a{
-    display: inline-block;
+.project-content p{
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tech-stack{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tech-stack span{
+    background: #1f2937;
+    color: #38bdf8;
     padding: 8px 14px;
-    background: linear-gradient(90deg,#2563eb,#7c3aed);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
+    border-radius: 30px;
     font-size: 14px;
+    font-weight: 600;
+}
+
+.project-buttons{
+    display: flex;
+    gap: 15px;
+}
+
+.project-buttons a{
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
     transition: 0.3s;
 }
 
-.project-content a:hover{
-    transform: scale(1.05);
+.live-btn{
+    background: #0ea5e9;
+    color: white;
 }
 
+.live-btn:hover{
+    background: #0284c7;
+}
+
+.code-btn{
+    border: 2px solid #0ea5e9;
+    color: #0ea5e9;
+}
+
+.code-btn:hover{
+    background: #0ea5e9;
+    color: white;
+}
 /* ================= CONTACT HERO ================= */
 .contact-hero {
     min-height: 40vh;

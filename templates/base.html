@@ -16,6 +16,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
@@ -79,11 +80,27 @@
 
         <!-- CONTACT -->
         <div class="footer-box">
-            <h3>Contact</h3>
-            <p>Gmail: hanudigitalhub@gmail.com</p>
-            <p>Phone: +91 9876543210</p>
-            <p>Andhra Pradesh & Telangana , India</p>
-        </div>
+    <h3>Contact</h3>
+
+    <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=hanudigitalhub@gmail.com&su=Website Inquiry&body=Hello Hanu Digital Hub,"
+   target="_blank"
+   class="email-btn">
+        <i class="fa-solid fa-envelope"></i>
+        hanudigitalhub@gmail.com </a>
+    </p>
+
+    <div class="social-links">
+
+        <p><a href="https://www.instagram.com/hanu_digitalhub?igsh=NjNjbTI5MTNrYnc5"
+           target="_blank">
+
+            <i class="fa-brands fa-instagram"></i>
+             hanu_digitalhub
+        </a></p>
+
+    </div>
+
+</div>
 
     </div>
 
@@ -100,6 +117,13 @@
     duration: 900,
     once: true
   });
+</script>
+<script>
+
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
 </script>
 
 </body>
