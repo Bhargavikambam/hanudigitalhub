@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    .success-page{
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:40px 20px;
+
+        background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("{% static 'images/bg.jpg' %}");
+
+        background-size:cover;
+        background-position:center;
+        background-repeat:no-repeat;
+    }
+
+    .success-container{
+        background:rgba(255,255,255,0.08);
+        backdrop-filter:blur(12px);
+
+        width:100%;
+        max-width:550px;
+
+        padding:45px 35px;
+        border-radius:20px;
+        text-align:center;
+
+        border:1px solid rgba(255,255,255,0.15);
+
+        box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
+        animation:fadeIn 0.5s ease;
+    }
+
+    .icon{
+        width:90px;
+        height:90px;
+        background:#22c55e;
+        color:#fff;
+
+        margin:auto;
+        border-radius:50%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        font-size:45px;
+        font-weight:bold;
+
+        margin-bottom:25px;
+
+        box-shadow:0 0 25px rgba(34,197,94,0.5);
+    }
+
+    h1{
+        color:white;
+        margin-bottom:15px;
+        font-size:34px;
+    }
+
+    p{
+        color:#d1d5db;
+        line-height:1.8;
+        margin-bottom:35px;
+        font-size:17px;
+    }
+
+    .buttons{
+        display:flex;
+        gap:15px;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .btn{
+        text-decoration:none;
+        padding:14px 30px;
+        border-radius:12px;
+        font-size:15px;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .home-btn{
+        background:#2563eb;
+        color:white;
+    }
+
+    .contact-btn{
+        background:#22c55e;
+        color:white;
+    }
+
+    .btn:hover{
+        transform:translateY(-3px);
+        opacity:0.9;
+    }
+
+    @keyframes fadeIn{
+        from{
+            opacity:0;
+            transform:translateY(15px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
+    /* Mobile */
+
+    @media(max-width:480px){
+
+        .success-container{
+            padding:35px 20px;
+        }
+
+        h1{
+            font-size:26px;
+        }
+
+        p{
+            font-size:15px;
+        }
+
+        .buttons{
+            flex-direction:column;
+        }
+
+        .btn{
+            width:100%;
+        }
+    }
+
+</style>
+
+<section class="success-page">
+
+    <div class="success-container">
+
+        <div class="icon">✓</div>
+
+        <h1>Message Sent Successfully</h1>
+
+        <p>
+            Thank you for contacting Hanu Digital Hub.
+            Your message has been received successfully.
+            We will get back to you as soon as possible.
+        </p>
+
+        <div class="buttons">
+
+            <a href="{% url 'home' %}" class="btn home-btn">
+                Back to Home
+            </a>
+
+            <a href="{% url 'contact' %}" class="btn contact-btn">
+                Send Another Message
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

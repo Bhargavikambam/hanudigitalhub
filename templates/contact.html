@@ -2,17 +2,62 @@
 {% load static %}
 
 {% block content %}
+<style>
 
+.form-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.form-title h2{
+    font-size:34px;
+    font-weight:700;
+
+    background:linear-gradient(to right, #2563eb, #06b6d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    margin-bottom:14px;
+}
+
+.form-title p{
+    font-size:16px;
+    color:#94a3b8;
+    line-height:1.8;
+    max-width:520px;
+    margin:auto;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .form-title h2{
+        font-size:26px;
+    }
+
+    .form-title p{
+        font-size:14px;
+        padding:0 10px;
+    }
+
+}
+
+</style>
 <!-- CONTACT HERO -->
 <section class="contact-hero">
-    <div class = "portfolio-title">
-    <h1 data-aos="fade-up">Contact Us</h1>
 
-    <p data-aos="fade-up" data-aos-delay="100">
-        Let’s build something amazing together.
-    </p>
+    <div class="portfolio-title">
+
+        <h1 data-aos="fade-up">
+            Let’s Create Something Great Together
+        </h1>
+
+        <p data-aos="fade-up" data-aos-delay="100">
+            Share your requirements with our team and we’ll help bring your vision to life.
+        </p>
+
     </div>
-
 
 </section>
 
@@ -21,20 +66,31 @@
 
     <div class="contact-card" data-aos="zoom-in">
 
-        <!-- ✅ IMPORTANT: method + csrf -->
+        <div class="form-title">
+
+            <h2>Send Us a Message</h2>
+
+            <p>
+                Fill out the form below and our team will contact you shortly.
+            </p>
+
+        </div>
+
         <form class="contact-form" method="POST">
 
             {% csrf_token %}
 
-            <!-- ✅ IMPORTANT: name attributes must match backend -->
             <input type="text" name="name" placeholder="Your Name" required>
 
             <input type="email" name="email" placeholder="Your Email" required>
 
             <input type="text" name="subject" placeholder="Subject" required>
+
             <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
 
-            <button type="submit">Send Message</button>
+            <button type="submit">
+                Send Message
+            </button>
 
         </form>
 
