@@ -43,7 +43,7 @@ Message:
             """,
             settings.EMAIL_HOST_USER,
             ['hanudigitalhub@gmail.com'],
-            fail_silently=True,
+            fail_silently=False,
         )
 
     except Exception as e:
