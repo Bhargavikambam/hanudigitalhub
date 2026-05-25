@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+import threading
 
 from .models import Contact, Portfolio, Service
 
@@ -24,9 +25,36 @@ def portfolio(request):
 
 
 # 📩 CONTACT PAGE + FORM + EMAIL + NOTIFICATION
+# Email function
+def send_contact_email(subject, name, email, message):
+
+    try:
+        send_mail(
+            f"New Contact: {subject}",
+            f"""
+New message received:
+
+Name: {name}
+Email: {email}
+Subject: {subject}
+
+Message:
+{message}
+            """,
+            settings.EMAIL_HOST_USER,
+            ['hanudigitalhub@gmail.com'],
+            fail_silently=True,
+        )
+
+    except Exception as e:
+        print(e)
+
+
+# CONTACT PAGE
 def contact(request):
 
     if request.method == "POST":
+
         name = request.POST.get('name')
         email = request.POST.get('email')
         subject = request.POST.get('subject')
@@ -40,27 +68,11 @@ def contact(request):
             message=message
         )
 
-        # 🔔 Popup message (UI notification)
-        messages.success(request, "Message sent successfully!")
-
-        # 📧 Email notification to OWNER
-        try:
-            send_mail(
-                f"New Contact: {subject}",
-                f"""
-New message received:
-
-Name: {name}
-Email: {email}
-Subject: {subject}
-Message: {message}
-                """,
-                settings.EMAIL_HOST_USER,
-                ['hanudigitalhub@gmail.com'],
-                fail_silently=True,
-            )
-        except:
-            pass
+        # Background email
+        threading.Thread(
+            target=send_contact_email,
+            args=(subject, name, email, message)
+        ).start()
 
         return redirect('success')
 
