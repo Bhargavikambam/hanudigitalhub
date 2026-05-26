@@ -59,7 +59,7 @@ def contact(request):
         email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-
+        print("SAVED TO DB")
         # Save to database
         Contact.objects.create(
             name=name,
