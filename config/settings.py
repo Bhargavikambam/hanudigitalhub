@@ -144,7 +144,7 @@ EMAIL_HOST_USER = os.environ.get(
 
 EMAIL_HOST_PASSWORD = os.environ.get(
     'EMAIL_HOST_PASSWORD',
-    'purzysgsjhrnnjgh'
+    'purz ysgs jhrn njgh'
 )
 
 # Default primary key field type
