@@ -47,7 +47,7 @@ Message:
         )
 
     except Exception as e:
-        print(e)
+        print("EMAIL ERROR:", e)
 
 
 # CONTACT PAGE
