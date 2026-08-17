@@ -5,34 +5,508 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Learn about Hanu Digital Hub - a creative digital studio focused on websites, branding, graphic design and digital experiences.">
+
+    <meta name="author"
+          content="Hanu Digital Hub">
 
     <title>About | Hanu Digital Hub</title>
 
-    <meta
-        name="description"
-        content="Learn more about Hanu Digital Hub, a creative digital studio offering simple and professional digital design services."
-    >
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         TAILWIND CSS
+    ====================================================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        gold: "#B78A52",
+
+                        dark: "#11110F",
+
+                        cream: "#F7F5F0"
+
+                    },
+
+                    fontFamily: {
+
+                        sans: [
+                            "DM Sans",
+                            "sans-serif"
+                        ],
+
+                        serif: [
+                            "Playfair Display",
+                            "serif"
+                        ]
+
+                    },
+
+                    boxShadow: {
+
+                        soft:
+                            "0 20px 60px rgba(17,17,15,.08)",
+
+                        gold:
+                            "0 25px 80px rgba(183,138,82,.25)"
+
+                    }
+
+                }
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet"
-    >
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
 
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- =====================================================
+         CUSTOM CSS
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           GLOBAL
+        ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+
+            scroll-behavior: smooth;
+
+            overflow-x: hidden;
+
+        }
+
+        body {
+
+            margin: 0;
+
+            width: 100%;
+
+            overflow-x: hidden;
+
+            background: #F7F5F0;
+
+            color: #11110F;
+
+        }
+
+        img {
+
+            display: block;
+
+            max-width: 100%;
+
+        }
+
+        ::selection {
+
+            background: #D8BD96;
+
+            color: #11110F;
+
+        }
+
+
+        /* =================================================
+           PRELOADER
+        ================================================= */
+
+        #preloader {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #11110F;
+
+            transition:
+                opacity .6s ease,
+                visibility .6s ease;
+
+        }
+
+        #preloader.hide {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+        }
+
+        .loader {
+
+            width: 45px;
+
+            height: 45px;
+
+            border: 3px solid
+                rgba(255,255,255,.15);
+
+            border-top-color:
+                #B78A52;
+
+            border-radius: 50%;
+
+            animation:
+                spin 1s linear infinite;
+
+        }
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        /* =================================================
+           SCROLL REVEAL
+        ================================================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+        .reveal-left {
+
+            opacity: 0;
+
+            transform:
+                translateX(-40px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-left.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+        .reveal-right {
+
+            opacity: 0;
+
+            transform:
+                translateX(40px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-right.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        /* =================================================
+           FLOAT
+        ================================================= */
+
+        .floating {
+
+            animation:
+                floating 5s ease-in-out infinite;
+
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-12px);
+
+            }
+
+        }
+
+
+        /* =================================================
+           ROTATING CIRCLE
+        ================================================= */
+
+        .rotating {
+
+            animation:
+                rotateCircle 18s linear infinite;
+
+        }
+
+        @keyframes rotateCircle {
+
+            from {
+
+                transform:
+                    rotate(0deg);
+
+            }
+
+            to {
+
+                transform:
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        /* =================================================
+           CARDS
+        ================================================= */
+
+        .value-card {
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
+
+        }
+
+        .value-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(17,17,15,.10);
+
+            border-color:
+                rgba(183,138,82,.4);
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .pro-button {
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+
+        }
+
+        .pro-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(17,17,15,.18);
+
+        }
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        .mobile-menu {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height .35s ease,
+                opacity .35s ease;
+
+        }
+
+        .mobile-menu.open {
+
+            max-height: 600px;
+
+            opacity: 1;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 767px) {
+
+            section {
+
+                max-width: 100%;
+
+                overflow: hidden;
+
+            }
+
+            .about-title {
+
+                font-size:
+                    clamp(
+                        3rem,
+                        15vw,
+                        4.5rem
+                    ) !important;
+
+                line-height:
+                    .96 !important;
+
+                letter-spacing:
+                    -.055em !important;
+
+            }
+
+            .value-card:hover {
+
+                transform:
+                    translateY(-3px);
+
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL PHONES
+        ================================================= */
+
+        @media (max-width: 380px) {
+
+            .about-title {
+
+                font-size:
+                    2.75rem !important;
+
+            }
+
+        }
+
+
+        /* =================================================
+           TOUCH DEVICES
+        ================================================= */
+
+        @media (hover: none) {
+
+            .value-card:hover {
+
+                transform: none;
+
+                box-shadow: none;
+
+            }
+
+            .pro-button:hover {
+
+                transform: none;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -41,97 +515,370 @@
 
 
 <!-- =====================================================
+     PRELOADER
+====================================================== -->
+
+<div id="preloader">
+
+    <div class="loader"></div>
+
+</div>
+
+
+
+<!-- =====================================================
      HEADER
-===================================================== -->
+====================================================== -->
 
-<header class="header">
+<header
+    class="fixed top-0 left-0 right-0 z-50
+           border-b border-black/5
+           bg-[#F7F5F0]/90
+           backdrop-blur-xl">
 
-    <div class="container nav">
+
+    <div
+        class="mx-auto flex h-[68px]
+               max-w-7xl
+               items-center
+               justify-between
+               px-4
+               sm:h-20
+               sm:px-6
+               lg:px-8">
 
 
-        <!-- Brand -->
+        <!-- =================================================
+             LOGO
+        ================================================== -->
 
-        <a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="group flex min-w-0
+                   items-center gap-2.5">
 
-            <div class="brand-mark">
 
-                <!-- Change logo.png to your logo filename -->
+            <img
+                src="images/logo.jpg"
+                alt="Hanu Digital Hub Logo"
+                class="h-10 w-10
+                       shrink-0
+                       rounded-xl
+                       object-cover
+                       ring-1 ring-black/10
+                       transition duration-300
+                       group-hover:scale-105
+                       sm:h-11
+                       sm:w-11">
 
-                <img
-                    src="images/logo.jpg"
-                    alt="Hanu Digital Hub Logo"
-                >
 
-            </div>
+            <div
+                class="min-w-0
+                       leading-none">
 
-            <div class="brand-text">
 
-                <strong>
-                    HANU DIGITAL HUB
-                </strong>
+                <div
+                    class="whitespace-nowrap
+                           text-[12px]
+                           font-extrabold
+                           tracking-[.10em]
+                           sm:text-[15px]
+                           sm:tracking-[.14em]">
 
-                <span>
-                    Creative Digital Studio
-                </span>
+
+                    <span
+                        class="text-[#11110F]">
+
+                        HANU
+
+                    </span>
+
+
+                    <span
+                        class="text-[#B78A52]">
+
+                        DIGITAL HUB
+
+                    </span>
+
+
+                </div>
+
+
+                <div
+                    class="mt-1.5 flex
+                           items-center gap-1.5">
+
+
+                    <span
+                        class="h-px w-4
+                               bg-[#B78A52]">
+
+                    </span>
+
+
+                    <span
+                        class="whitespace-nowrap
+                               text-[7px]
+                               font-semibold
+                               uppercase
+                               tracking-[.18em]
+                               text-black/45
+                               sm:text-[8px]">
+
+                        Creative Digital Studio
+
+                    </span>
+
+
+                </div>
+
 
             </div>
 
         </a>
 
 
-        <!-- Mobile Menu -->
 
-        <input
-            type="checkbox"
-            id="menu-toggle"
-            class="menu-checkbox"
-        >
+        <!-- =================================================
+             DESKTOP NAV
+        ================================================== -->
 
-        <label
-            for="menu-toggle"
-            class="menu-button"
-            aria-label="Open navigation menu"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </label>
+        <nav
+            class="hidden
+                   items-center
+                   gap-8
+                   md:flex">
 
 
-        <!-- Navigation -->
+            <a
+                href="index.html"
+                class="text-sm
+                       font-semibold
+                       text-black/55
+                       transition
+                       hover:text-[#B78A52]">
 
-        <nav class="nav-menu">
-
-            <a href="index.html">
                 Home
+
             </a>
 
-            <a href="about.html">
+
+            <a
+                href="about.html"
+                class="text-sm
+                       font-semibold
+                       text-[#B78A52]">
+
                 About
+
             </a>
 
-            <a href="services.html">
+
+            <a
+                href="services.html"
+                class="text-sm
+                       font-semibold
+                       text-black/55
+                       transition
+                       hover:text-[#B78A52]">
+
                 Services
+
             </a>
 
-            <a href="contact.html">
+
+            <a
+                href="contact.html"
+                class="text-sm
+                       font-semibold
+                       text-black/55
+                       transition
+                       hover:text-[#B78A52]">
+
                 Contact
+
             </a>
+
 
         </nav>
 
 
-        <!-- Desktop Button -->
 
-        <a href="contact.html" class="nav-contact">
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <a
+            href="contact.html"
+            class="pro-button
+                   hidden
+                   items-center gap-2
+                   rounded-full
+                   bg-[#11110F]
+                   px-5 py-3
+                   text-sm
+                   font-bold
+                   text-white
+                   md:inline-flex">
 
             Let's Talk
 
-            <i class="fa-solid fa-arrow-right"></i>
+            <i
+                class="fa-solid
+                       fa-arrow-right
+                       text-xs">
+
+            </i>
 
         </a>
+
+
+
+        <!-- =================================================
+             MOBILE BUTTON
+        ================================================== -->
+
+        <button
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            class="grid h-10 w-10
+                   shrink-0
+                   place-items-center
+                   rounded-xl
+                   border border-black/10
+                   bg-white
+                   md:hidden">
+
+
+            <div
+                class="space-y-1.5">
+
+
+                <span
+                    class="block h-0.5
+                           w-5
+                           bg-[#11110F]">
+
+                </span>
+
+
+                <span
+                    class="block h-0.5
+                           w-5
+                           bg-[#11110F]">
+
+                </span>
+
+
+                <span
+                    class="block h-0.5
+                           w-5
+                           bg-[#11110F]">
+
+                </span>
+
+
+            </div>
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         MOBILE MENU
+    ================================================== -->
+
+    <div
+        id="mobileMenu"
+        class="mobile-menu
+               mx-3 mb-3
+               rounded-2xl
+               border border-black/10
+               bg-white
+               shadow-soft
+               md:hidden">
+
+
+        <nav
+            class="p-3">
+
+
+            <a
+                href="index.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       hover:bg-black/5">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="mobile-link
+                       block rounded-xl
+                       bg-[#B78A52]/10
+                       px-4 py-3.5
+                       font-semibold
+                       text-[#9A703F]">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       hover:bg-black/5">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       hover:bg-black/5">
+
+                Contact
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mobile-link
+                       mt-2 block
+                       rounded-xl
+                       bg-[#11110F]
+                       px-4 py-3.5
+                       text-center
+                       font-bold
+                       text-white">
+
+                Start Your Project
+
+            </a>
+
+
+        </nav>
 
     </div>
 
@@ -140,28 +887,407 @@
 
 
 <!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+
+
+<!-- =====================================================
      ABOUT HERO
-===================================================== -->
+====================================================== -->
 
-<section class="page-hero">
+<section
+    class="relative
+           overflow-hidden
+           pb-20
+           pt-32
+           sm:pb-24
+           sm:pt-40
+           lg:pb-32">
 
-    <div class="container">
 
-        <span class="section-tag">
-            ABOUT US
-        </span>
+    <!-- DECORATION -->
 
-        <h1>
-            We create
-            <span>digital ideas</span>
-            simply.
-        </h1>
+    <div
+        class="pointer-events-none
+               absolute
+               -right-32
+               top-24
+               h-80
+               w-80
+               rounded-full
+               bg-[#D8BD96]/20
+               blur-3xl">
 
-        <p>
-            Hanu Digital Hub is a creative digital studio
-            focused on making brands look simple,
-            professional and memorable online.
-        </p>
+    </div>
+
+
+    <div
+        class="pointer-events-none
+               absolute
+               -left-32
+               bottom-0
+               h-80
+               w-80
+               rounded-full
+               bg-[#E7DDD0]/70
+               blur-3xl">
+
+    </div>
+
+
+
+    <div
+        class="mx-auto
+               grid
+               max-w-7xl
+               items-center
+               gap-12
+               px-5
+               sm:px-6
+               lg:grid-cols-[1.05fr_.95fr]
+               lg:gap-16
+               lg:px-8">
+
+
+        <!-- =================================================
+             HERO TEXT
+        ================================================== -->
+
+        <div
+            class="reveal">
+
+
+            <div
+                class="mb-6
+                       inline-flex
+                       items-center
+                       gap-2
+                       rounded-full
+                       border border-black/10
+                       bg-white/70
+                       px-4 py-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.18em]
+                       text-[#9A703F]">
+
+
+                <span
+                    class="h-1.5 w-1.5
+                           rounded-full
+                           bg-[#B78A52]">
+
+                </span>
+
+
+                About Our Studio
+
+            </div>
+
+
+
+            <h1
+                class="about-title
+                       font-serif
+                       text-5xl
+                       font-semibold
+                       leading-[.98]
+                       tracking-[-.045em]
+                       sm:text-7xl
+                       lg:text-[6rem]">
+
+
+                Ideas become
+
+                <br>
+
+                <em
+                    class="text-[#B78A52]">
+
+                    identity.
+
+                </em>
+
+
+            </h1>
+
+
+
+            <p
+                class="mt-6
+                       max-w-xl
+                       text-[15px]
+                       leading-7
+                       text-black/55
+                       sm:mt-7
+                       sm:text-lg
+                       sm:leading-8">
+
+
+                Hanu Digital Hub is a creative digital
+                studio built around one simple idea:
+                great design should make your brand
+                easier to recognize, remember and trust.
+
+
+            </p>
+
+
+            <div
+                class="mt-7">
+
+
+                <a
+                    href="#story"
+                    class="pro-button
+                           inline-flex
+                           w-full
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-[#11110F]
+                           px-6 py-4
+                           text-sm
+                           font-bold
+                           text-white
+                           sm:w-auto">
+
+
+                    Our Story
+
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-down
+                               text-xs">
+
+                    </i>
+
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HERO VISUAL
+        ================================================== -->
+
+        <div
+            class="reveal-right
+                   relative
+                   flex
+                   min-h-[330px]
+                   items-center
+                   justify-center
+                   sm:min-h-[430px]">
+
+
+            <!-- ROTATING RING -->
+
+            <div
+                class="rotating
+                       absolute
+                       h-64
+                       w-64
+                       rounded-full
+                       border
+                       border-dashed
+                       border-[#B78A52]/40
+                       sm:h-96
+                       sm:w-96">
+
+            </div>
+
+
+
+            <!-- MAIN CIRCLE -->
+
+            <div
+                class="relative
+                       grid
+                       h-56
+                       w-56
+                       place-items-center
+                       rounded-full
+                       bg-gradient-to-br
+                       from-[#F1E5D4]
+                       via-[#D8BD96]
+                       to-[#8D6339]
+                       shadow-gold
+                       sm:h-80
+                       sm:w-80">
+
+
+                <div
+                    class="text-center
+                           text-white">
+
+
+                    <img
+                        src="images/logo.jpg"
+                        alt="Hanu Digital Hub"
+                        class="mx-auto
+                               h-20
+                               w-20
+                               rounded-2xl
+                               object-cover
+                               shadow-xl
+                               sm:h-24
+                               sm:w-24">
+
+
+                    <p
+                        class="mt-4
+                               text-[11px]
+                               font-extrabold
+                               tracking-[.2em]">
+
+                        HANU DIGITAL HUB
+
+                    </p>
+
+
+                    <p
+                        class="mt-2
+                               text-[8px]
+                               uppercase
+                               tracking-[.25em]
+                               text-white/70">
+
+                        Creative Digital Studio
+
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FLOATING CARD -->
+
+            <div
+                class="floating
+                       absolute
+                       left-0
+                       top-5
+                       rounded-2xl
+                       border border-black/5
+                       bg-white
+                       px-4 py-3
+                       shadow-2xl">
+
+
+                <div
+                    class="flex
+                           items-center
+                           gap-2">
+
+
+                    <span
+                        class="grid
+                               h-8
+                               w-8
+                               place-items-center
+                               rounded-xl
+                               bg-[#B78A52]/10
+                               text-[#B78A52]">
+
+
+                        <i
+                            class="fa-solid
+                                   fa-heart">
+
+                        </i>
+
+
+                    </span>
+
+
+                    <div>
+
+
+                        <p
+                            class="text-[9px]
+                                   font-bold
+                                   uppercase
+                                   tracking-wider
+                                   text-black/35">
+
+                            Our Focus
+
+                        </p>
+
+
+                        <p
+                            class="text-xs
+                                   font-bold">
+
+                            Meaningful Design
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SECOND CARD -->
+
+            <div
+                class="floating
+                       absolute
+                       bottom-5
+                       right-0
+                       rounded-2xl
+                       border border-black/5
+                       bg-[#11110F]
+                       px-4 py-3
+                       text-white
+                       shadow-2xl">
+
+
+                <p
+                    class="text-[9px]
+                           uppercase
+                           tracking-wider
+                           text-white/40">
+
+                    Built For
+
+                </p>
+
+
+                <p
+                    class="mt-1
+                           text-xs
+                           font-bold">
+
+                    Modern Brands
+
+                </p>
+
+            </div>
+
+
+        </div>
+
 
     </div>
 
@@ -170,102 +1296,887 @@
 
 
 <!-- =====================================================
-     ABOUT CONTENT
-===================================================== -->
+     STORY
+====================================================== -->
 
-<section class="section about">
-
-    <div class="container">
-
-        <span class="section-tag">
-            WHO WE ARE
-        </span>
-
-        <h2>
-            Simple work.
-            <span>Strong impact.</span>
-        </h2>
-
-        <p class="section-description">
-
-            We help small businesses, creators and
-            growing brands build a better digital presence
-            through clean designs and simple digital
-            solutions.
-
-        </p>
+<section
+    id="story"
+    class="bg-white
+           py-20
+           sm:py-24
+           lg:py-32">
 
 
-        <div class="about-highlight">
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
 
-            <div class="highlight-icon">
 
-                <i class="fa-solid fa-lightbulb"></i>
+        <div
+            class="grid
+                   gap-12
+                   lg:grid-cols-[.75fr_1.25fr]
+                   lg:gap-20">
 
-            </div>
 
-            <div>
+            <!-- LEFT -->
 
-                <h3>
-                    Creative Thinking
-                </h3>
+            <div
+                class="reveal-left">
 
-                <p>
-                    Every project starts with a simple idea
-                    and is shaped into a clean visual solution.
+
+                <p
+                    class="text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#A07443]">
+
+                    Our Story
+
                 </p>
 
+
+                <h2
+                    class="mt-3
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           leading-tight
+                           sm:text-5xl">
+
+
+                    Small studio.
+
+                    <br>
+
+                    <em
+                        class="text-[#B78A52]">
+
+                        Big ideas.
+
+                    </em>
+
+
+                </h2>
+
+
             </div>
+
+
+
+            <!-- RIGHT -->
+
+            <div
+                class="reveal-right">
+
+
+                <p
+                    class="text-[16px]
+                           leading-8
+                           text-black/60
+                           sm:text-lg">
+
+
+                    Hanu Digital Hub started with a passion
+                    for turning ideas into visual experiences.
+                    We believe that every business has a story,
+                    and good design helps tell that story clearly.
+
+
+                </p>
+
+
+                <p
+                    class="mt-5
+                           text-sm
+                           leading-7
+                           text-black/50
+                           sm:text-base">
+
+
+                    Our work brings together creativity,
+                    technology and strategy. Whether you need
+                    a new identity, an eye-catching poster,
+                    social media creatives or a modern website,
+                    we focus on creating work that feels
+                    purposeful and professional.
+
+
+                </p>
+
+
+                <p
+                    class="mt-5
+                           text-sm
+                           leading-7
+                           text-black/50
+                           sm:text-base">
+
+
+                    We keep the process simple, collaborative
+                    and focused on your goals.
+
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+====================================================== -->
+
+<section
+    class="bg-[#11110F]
+           py-16
+           text-white
+           sm:py-20">
+
+
+    <div
+        class="mx-auto
+               grid
+               max-w-7xl
+               grid-cols-2
+               gap-y-10
+               px-5
+               sm:px-6
+               md:grid-cols-4
+               lg:px-8">
+
+
+        <!-- STAT -->
+
+        <div
+            class="reveal
+                   text-center">
+
+
+            <div
+                class="font-serif
+                       text-4xl
+                       font-semibold
+                       text-[#D8BD96]
+                       sm:text-5xl">
+
+                100%
+
+            </div>
+
+
+            <p
+                class="mt-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.16em]
+                       text-white/35">
+
+                Creative Focus
+
+            </p>
+
 
         </div>
 
 
-        <div class="about-highlight">
 
-            <div class="highlight-icon">
+        <!-- STAT -->
 
-                <i class="fa-solid fa-pen-nib"></i>
+        <div
+            class="reveal
+                   text-center">
 
-            </div>
 
-            <div>
+            <div
+                class="font-serif
+                       text-4xl
+                       font-semibold
+                       text-[#D8BD96]
+                       sm:text-5xl">
 
-                <h3>
-                    Clean Design
-                </h3>
-
-                <p>
-                    We believe professional design doesn't
-                    need to be complicated.
-                </p>
+                24/7
 
             </div>
+
+
+            <p
+                class="mt-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.16em]
+                       text-white/35">
+
+                Ideas In Motion
+
+            </p>
+
 
         </div>
 
 
-        <div class="about-highlight">
 
-            <div class="highlight-icon">
+        <!-- STAT -->
 
-                <i class="fa-solid fa-mobile-screen"></i>
+        <div
+            class="reveal
+                   text-center">
+
+
+            <div
+                class="font-serif
+                       text-4xl
+                       font-semibold
+                       text-[#D8BD96]
+                       sm:text-5xl">
+
+                360°
 
             </div>
 
-            <div>
 
-                <h3>
-                    Digital First
+            <p
+                class="mt-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.16em]
+                       text-white/35">
+
+                Digital Thinking
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- STAT -->
+
+        <div
+            class="reveal
+                   text-center">
+
+
+            <div
+                class="font-serif
+                       text-4xl
+                       font-semibold
+                       text-[#D8BD96]
+                       sm:text-5xl">
+
+                1:1
+
+            </div>
+
+
+            <p
+                class="mt-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.16em]
+                       text-white/35">
+
+                Client Focus
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VALUES
+====================================================== -->
+
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
+
+
+        <!-- HEADING -->
+
+        <div
+            class="reveal
+                   max-w-2xl">
+
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#A07443]">
+
+                What We Believe
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       leading-tight
+                       sm:text-5xl">
+
+
+                Our values shape
+
+                <em
+                    class="text-[#B78A52]">
+
+                    every project.
+
+                </em>
+
+
+            </h2>
+
+
+        </div>
+
+
+
+        <!-- VALUE GRID -->
+
+        <div
+            class="mt-10
+                   grid
+                   gap-4
+                   sm:grid-cols-2
+                   lg:grid-cols-4">
+
+
+            <!-- VALUE 1 -->
+
+            <article
+                class="value-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white
+                       p-6
+                       shadow-sm">
+
+
+                <div
+                    class="grid
+                           h-12
+                           w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/10
+                           text-[#B78A52]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-lightbulb">
+
+                    </i>
+
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-lg
+                           font-bold">
+
+                    Creativity
+
                 </h3>
 
-                <p>
-                    Our work is created with modern,
-                    mobile-friendly digital experiences in mind.
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+
+                    We explore fresh ideas and avoid
+                    boring, predictable design.
+
+
+                </p>
+
+
+            </article>
+
+
+
+            <!-- VALUE 2 -->
+
+            <article
+                class="value-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white
+                       p-6
+                       shadow-sm">
+
+
+                <div
+                    class="grid
+                           h-12
+                           w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/10
+                           text-[#B78A52]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-bullseye">
+
+                    </i>
+
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-lg
+                           font-bold">
+
+                    Purpose
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+
+                    Every design decision has a reason
+                    and supports a clear goal.
+
+
+                </p>
+
+
+            </article>
+
+
+
+            <!-- VALUE 3 -->
+
+            <article
+                class="value-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white
+                       p-6
+                       shadow-sm">
+
+
+                <div
+                    class="grid
+                           h-12
+                           w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/10
+                           text-[#B78A52]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-gem">
+
+                    </i>
+
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-lg
+                           font-bold">
+
+                    Quality
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+
+                    We care about the details that make
+                    a digital experience feel polished.
+
+
+                </p>
+
+
+            </article>
+
+
+
+            <!-- VALUE 4 -->
+
+            <article
+                class="value-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white
+                       p-6
+                       shadow-sm">
+
+
+                <div
+                    class="grid
+                           h-12
+                           w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/10
+                           text-[#B78A52]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-handshake">
+
+                    </i>
+
+
+                </div>
+
+
+                <h3
+                    class="mt-6
+                           text-lg
+                           font-bold">
+
+                    Collaboration
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+
+                    We work with clients, not just for
+                    them, throughout the creative process.
+
+
+                </p>
+
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROCESS
+====================================================== -->
+
+<section
+    class="bg-white
+           py-20
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
+
+
+        <div
+            class="reveal
+                   text-center">
+
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#A07443]">
+
+                Our Process
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       sm:text-5xl">
+
+
+                Simple process.
+
+                <em
+                    class="text-[#B78A52]">
+
+                    Better results.
+
+                </em>
+
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div
+            class="mt-12
+                   grid
+                   gap-4
+                   md:grid-cols-4">
+
+
+            <!-- STEP 1 -->
+
+            <div
+                class="reveal
+                       relative
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#B78A52]">
+
+                    01
+
+                </span>
+
+
+                <h3
+                    class="mt-5
+                           font-bold">
+
+                    Discover
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    We understand your brand,
+                    audience and goals.
+
                 </p>
 
             </div>
 
+
+
+            <!-- STEP 2 -->
+
+            <div
+                class="reveal
+                       relative
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#B78A52]">
+
+                    02
+
+                </span>
+
+
+                <h3
+                    class="mt-5
+                           font-bold">
+
+                    Explore
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    We develop concepts and creative
+                    directions for your project.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- STEP 3 -->
+
+            <div
+                class="reveal
+                       relative
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#B78A52]">
+
+                    03
+
+                </span>
+
+
+                <h3
+                    class="mt-5
+                           font-bold">
+
+                    Create
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    We turn the selected direction
+                    into polished final work.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- STEP 4 -->
+
+            <div
+                class="reveal
+                       relative
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#B78A52]">
+
+                    04
+
+                </span>
+
+
+                <h3
+                    class="mt-5
+                           font-bold">
+
+                    Deliver
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Your finished digital assets are
+                    prepared and delivered professionally.
+
+                </p>
+
+            </div>
+
+
         </div>
+
 
     </div>
 
@@ -275,37 +2186,158 @@
 
 <!-- =====================================================
      CTA
-===================================================== -->
+====================================================== -->
 
-<section class="section why-us">
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
 
-    <div class="container">
 
-        <span class="section-tag">
-            LET'S CREATE
-        </span>
+    <div
+        class="reveal
+               mx-auto
+               max-w-6xl
+               px-5
+               sm:px-6
+               lg:px-8">
 
-        <h2>
-            Have an idea?
-            <span>Let's build it.</span>
-        </h2>
 
-        <p>
-            Tell us what you need and let's turn your idea
-            into something simple, creative and professional.
-        </p>
+        <div
+            class="relative
+                   overflow-hidden
+                   rounded-[26px]
+                   bg-[#11110F]
+                   px-6
+                   py-14
+                   text-center
+                   text-white
+                   sm:rounded-[2rem]
+                   sm:px-12
+                   sm:py-20">
 
-        <a
-            href="contact.html"
-            class="btn btn-primary"
-            style="margin-top:25px;"
-        >
 
-            Start a Project
+            <div
+                class="pointer-events-none
+                       absolute
+                       -right-20
+                       -top-20
+                       h-56
+                       w-56
+                       rounded-full
+                       bg-[#B78A52]/20
+                       blur-3xl">
 
-            <i class="fa-solid fa-arrow-right"></i>
+            </div>
 
-        </a>
+
+            <div
+                class="pointer-events-none
+                       absolute
+                       -bottom-20
+                       -left-20
+                       h-56
+                       w-56
+                       rounded-full
+                       bg-white/5
+                       blur-3xl">
+
+            </div>
+
+
+
+            <div
+                class="relative z-10">
+
+
+                <p
+                    class="text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#D8BD96]">
+
+                    Let's Work Together
+
+                </p>
+
+
+                <h2
+                    class="mt-4
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           leading-tight
+                           sm:text-6xl">
+
+
+                    Your next idea deserves
+
+                    <br>
+
+                    <em
+                        class="text-[#D8BD96]">
+
+                        great design.
+
+                    </em>
+
+
+                </h2>
+
+
+                <p
+                    class="mx-auto
+                           mt-4
+                           max-w-xl
+                           text-sm
+                           leading-7
+                           text-white/45">
+
+
+                    Have a project in mind?
+                    Let's turn your idea into something
+                    people remember.
+
+
+                </p>
+
+
+                <a
+                    href="contact.html"
+                    class="pro-button
+                           mt-7
+                           inline-flex
+                           w-full
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-white
+                           px-7
+                           py-4
+                           text-sm
+                           font-bold
+                           text-[#11110F]
+                           sm:w-auto">
+
+
+                    Start a Conversation
+
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right">
+
+                    </i>
+
+
+                </a>
+
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -313,130 +2345,565 @@
 
 
 
+</main>
+
+
+
 <!-- =====================================================
      FOOTER
-===================================================== -->
+====================================================== -->
 
-<footer class="footer">
+<footer
+    class="bg-[#11110F]
+           text-white">
 
-    <div class="container footer-container">
+
+    <div
+        class="mx-auto
+               grid
+               max-w-7xl
+               gap-10
+               px-5
+               py-14
+               sm:px-6
+               md:grid-cols-3
+               lg:px-8">
 
 
-        <!-- Brand -->
+        <!-- BRAND -->
 
-        <div class="footer-brand">
+        <div>
 
-            <a href="index.html" class="footer-logo">
 
-                <div class="footer-logo-mark">
+            <a
+                href="index.html"
+                class="flex
+                       items-center
+                       gap-3">
 
-                    <img
-                        src="images/logo.jpg"
-                        alt="Hanu Digital Hub Logo"
-                    >
 
-                </div>
+                <img
+                    src="images/logo.jpg"
+                    alt="Hanu Digital Hub"
+                    class="h-11
+                           w-11
+                           rounded-xl
+                           object-cover">
+
 
                 <div>
 
-                    <strong>
+
+                    <strong
+                        class="block
+                               text-[11px]
+                               tracking-[.17em]">
+
                         HANU DIGITAL HUB
+
                     </strong>
 
-                    <span>
+
+                    <small
+                        class="text-white/40">
+
                         Creative Digital Studio
-                    </span>
+
+                    </small>
+
 
                 </div>
 
+
             </a>
 
-            <p>
-                Creative. Simple. Professional.
+
+            <p
+                class="mt-5
+                       max-w-sm
+                       text-sm
+                       leading-7
+                       text-white/40">
+
+
+                Creative websites, branding and
+                digital design made to help your
+                brand look professional and memorable.
+
+
             </p>
 
-        </div>
-
-
-        <!-- Quick Links -->
-
-        <div class="footer-links">
-
-            <h4>
-                Quick Links
-            </h4>
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="services.html">
-                Services
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
 
         </div>
 
 
-        <!-- Connect -->
 
-        <div class="footer-connect">
+        <!-- EXPLORE -->
 
-            <h4>
-                Let's Connect
+        <div>
+
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                Explore
+
             </h4>
+
 
             <a
-    href="https://www.instagram.com/HANU_DIGITALHUB/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
+                href="index.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
 
-                <i class="fa-brands fa-instagram"></i>
-
-                Instagram DM
+                Home
 
             </a>
+
+
+            <a
+                href="about.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                Contact
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- CONNECT -->
+
+        <div>
+
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                Connect
+
+            </h4>
+
+
+            <a
+                href="https://www.instagram.com/HANU_DIGITALHUB/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex
+                       items-center
+                       gap-2
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+
+                <i
+                    class="fa-brands
+                           fa-instagram">
+
+                </i>
+
+
+                Instagram
+
+
+            </a>
+
 
             <a
                 href="mailto:hanudigitalhubofficial@gmail.com"
-            >
+                class="flex
+                       items-center
+                       gap-2
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
 
-                <i class="fa-solid fa-envelope"></i>
 
-                Email Us
+                <i
+                    class="fa-solid
+                           fa-envelope">
+
+                </i>
+
+
+                Email
+
 
             </a>
 
+
         </div>
+
 
     </div>
 
 
-    <div class="footer-bottom">
 
-        <div class="container footer-bottom-inner">
+    <!-- COPYRIGHT -->
 
-            <p>
-                © 2026 Hanu Digital Hub
-            </p>
+    <div
+        class="border-t
+               border-white/10">
+
+
+        <div
+            class="mx-auto
+                   flex
+                   max-w-7xl
+                   flex-col
+                   gap-2
+                   px-5
+                   py-5
+                   text-xs
+                   text-white/30
+                   sm:flex-row
+                   sm:items-center
+                   sm:justify-between
+                   sm:px-6
+                   lg:px-8">
+
 
             <span>
-                All rights reserved.
+
+                ©
+                <span id="year"></span>
+                Hanu Digital Hub
+
             </span>
 
+
+            <span>
+
+                All rights reserved.
+
+            </span>
+
+
         </div>
+
 
     </div>
 
 </footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+    /* =================================================
+       PRELOADER
+    ================================================= */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            const preloader =
+                document.getElementById(
+                    "preloader"
+                );
+
+            setTimeout(
+                function () {
+
+                    preloader.classList.add(
+                        "hide"
+                    );
+
+                },
+                400
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       MOBILE MENU
+    ================================================= */
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+
+    const mobileMenu =
+        document.getElementById(
+            "mobileMenu"
+        );
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            const isOpen =
+                mobileMenu.classList.toggle(
+                    "open"
+                );
+
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       CLOSE MENU AFTER LINK CLICK
+    ================================================= */
+
+    document
+        .querySelectorAll(".mobile-link")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        mobileMenu.classList.remove(
+                            "open"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       SCROLL REVEAL
+    ================================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.10
+            }
+
+        );
+
+
+    revealElements.forEach(
+        function (element) {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       CURRENT YEAR
+    ================================================= */
+
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
+
+
+
+    /* =================================================
+       DESKTOP BUTTON EFFECT
+    ================================================= */
+
+    document
+        .querySelectorAll(".pro-button")
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "mousemove",
+                    function (event) {
+
+                        if (
+                            window.innerWidth < 768
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const rect =
+                            button.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left -
+                            rect.width / 2;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top -
+                            rect.height / 2;
+
+
+                        button.style.transform =
+                            `translate(
+                                ${x * .03}px,
+                                ${y * .03}px
+                            )`;
+
+                    }
+                );
+
+
+                button.addEventListener(
+                    "mouseleave",
+                    function () {
+
+                        button.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       ESCAPE KEY
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                mobileMenu.classList.remove(
+                    "open"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+
+</script>
 
 
 </body>

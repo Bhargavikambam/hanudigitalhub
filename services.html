@@ -5,40 +5,544 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Hanu Digital Hub services - Website Design, Branding, Graphic Design, Poster Design, Logo Design and Digital Creative Services.">
+
+    <meta name="author"
+          content="Hanu Digital Hub">
 
     <title>Services | Hanu Digital Hub</title>
 
-    <meta
-        name="description"
-        content="Explore creative digital design and website services from Hanu Digital Hub."
-    >
 
-    <!-- Google Fonts -->
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         TAILWIND CSS
+    ====================================================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        gold: "#B78A52",
+
+                        dark: "#11110F",
+
+                        cream: "#F7F5F0"
+
+                    },
+
+                    fontFamily: {
+
+                        sans: [
+                            "DM Sans",
+                            "sans-serif"
+                        ],
+
+                        serif: [
+                            "Playfair Display",
+                            "serif"
+                        ]
+
+                    },
+
+                    boxShadow: {
+
+                        soft:
+                            "0 20px 60px rgba(17,17,15,.08)",
+
+                        gold:
+                            "0 25px 80px rgba(183,138,82,.25)"
+
+                    }
+
+                }
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet"
-    >
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- Font Awesome -->
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <!-- =====================================================
+         CUSTOM CSS
+    ====================================================== -->
 
-    <!-- Main CSS -->
+    <style>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+        /* =================================================
+           GLOBAL
+        ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background: #F7F5F0;
+            color: #11110F;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ::selection {
+            background: #D8BD96;
+            color: #11110F;
+        }
+
+
+        /* =================================================
+           PRELOADER
+        ================================================= */
+
+        #preloader {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #11110F;
+
+            transition:
+                opacity .6s ease,
+                visibility .6s ease;
+
+        }
+
+        #preloader.hide {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+        }
+
+        .loader {
+
+            width: 45px;
+
+            height: 45px;
+
+            border: 3px solid
+                rgba(255,255,255,.15);
+
+            border-top-color:
+                #B78A52;
+
+            border-radius: 50%;
+
+            animation:
+                spin 1s linear infinite;
+
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =================================================
+           SCROLL REVEAL
+        ================================================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(35px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal.show {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+        .reveal-left {
+
+            opacity: 0;
+
+            transform: translateX(-40px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-left.show {
+
+            opacity: 1;
+
+            transform: translateX(0);
+
+        }
+
+        .reveal-right {
+
+            opacity: 0;
+
+            transform: translateX(40px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-right.show {
+
+            opacity: 1;
+
+            transform: translateX(0);
+
+        }
+
+
+        /* =================================================
+           FLOATING ANIMATION
+        ================================================= */
+
+        .floating {
+
+            animation:
+                floating 5s ease-in-out infinite;
+
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+
+        /* =================================================
+           ROTATION
+        ================================================= */
+
+        .rotating {
+
+            animation:
+                rotateCircle 18s linear infinite;
+
+        }
+
+        @keyframes rotateCircle {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =================================================
+           SERVICE CARD
+        ================================================= */
+
+        .service-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease,
+                border-color .4s ease;
+
+        }
+
+        .service-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+
+            height: 160px;
+
+            right: -80px;
+
+            top: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(183,138,82,.10);
+
+            transition:
+                transform .5s ease;
+
+        }
+
+        .service-card:hover::before {
+
+            transform:
+                scale(2.5);
+
+        }
+
+        .service-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(17,17,15,.10);
+
+            border-color:
+                rgba(183,138,82,.35);
+
+        }
+
+
+        /* =================================================
+           ICON
+        ================================================= */
+
+        .service-icon {
+
+            transition:
+                transform .4s ease,
+                background .4s ease;
+
+        }
+
+        .service-card:hover .service-icon {
+
+            transform:
+                rotate(-5deg)
+                scale(1.08);
+
+        }
+
+
+        /* =================================================
+           PROJECT IMAGE
+        ================================================= */
+
+        .project-image {
+
+            transition:
+                transform .7s ease;
+
+        }
+
+        .project-card:hover .project-image {
+
+            transform:
+                scale(1.07);
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .pro-button {
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+
+        }
+
+        .pro-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(17,17,15,.18);
+
+        }
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        .mobile-menu {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height .35s ease,
+                opacity .35s ease;
+
+        }
+
+        .mobile-menu.open {
+
+            max-height: 600px;
+
+            opacity: 1;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 767px) {
+
+            section {
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .service-title {
+
+                font-size:
+                    clamp(
+                        3rem,
+                        15vw,
+                        4.5rem
+                    ) !important;
+
+                line-height:
+                    .96 !important;
+
+                letter-spacing:
+                    -.055em !important;
+
+            }
+
+            .service-card:hover {
+
+                transform:
+                    translateY(-3px);
+
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL PHONES
+        ================================================= */
+
+        @media (max-width: 380px) {
+
+            .service-title {
+
+                font-size:
+                    2.7rem !important;
+
+            }
+
+        }
+
+
+        /* =================================================
+           TOUCH DEVICES
+        ================================================= */
+
+        @media (hover: none) {
+
+            .service-card:hover {
+
+                transform: none;
+
+                box-shadow: none;
+
+            }
+
+            .pro-button:hover {
+
+                transform: none;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -47,98 +551,360 @@
 
 
 <!-- =====================================================
+     PRELOADER
+====================================================== -->
+
+<div id="preloader">
+
+    <div class="loader"></div>
+
+</div>
+
+
+
+<!-- =====================================================
      HEADER
-===================================================== -->
+====================================================== -->
 
-<header class="header">
+<header
+    class="fixed top-0 left-0 right-0 z-50
+           border-b border-black/5
+           bg-[#F7F5F0]/90
+           backdrop-blur-xl">
 
-    <div class="container nav">
+
+    <div
+        class="mx-auto flex h-[68px]
+               max-w-7xl
+               items-center
+               justify-between
+               px-4
+               sm:h-20
+               sm:px-6
+               lg:px-8">
 
 
-        <!-- BRAND -->
+        <!-- LOGO -->
 
-        <a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="group flex min-w-0
+                   items-center gap-2.5">
 
-            <div class="brand-mark">
 
-                <img
-                    src="images/logo.jpg"
-                    alt="Hanu Digital Hub Logo"
-                >
+            <img
+                src="images/logo.jpg"
+                alt="Hanu Digital Hub Logo"
+                class="h-10 w-10
+                       shrink-0
+                       rounded-xl
+                       object-cover
+                       ring-1 ring-black/10
+                       transition duration-300
+                       group-hover:scale-105
+                       sm:h-11
+                       sm:w-11">
 
-            </div>
 
-            <div class="brand-text">
+            <div
+                class="min-w-0
+                       leading-none">
 
-                <strong>
-                    HANU DIGITAL HUB
-                </strong>
 
-                <span>
-                    Creative Digital Studio
-                </span>
+                <div
+                    class="whitespace-nowrap
+                           text-[12px]
+                           font-extrabold
+                           tracking-[.10em]
+                           sm:text-[15px]
+                           sm:tracking-[.14em]">
+
+
+                    <span
+                        class="text-[#11110F]">
+
+                        HANU
+
+                    </span>
+
+
+                    <span
+                        class="text-[#B78A52]">
+
+                        DIGITAL HUB
+
+                    </span>
+
+
+                </div>
+
+
+                <div
+                    class="mt-1.5 flex
+                           items-center gap-1.5">
+
+
+                    <span
+                        class="h-px w-4
+                               bg-[#B78A52]">
+
+                    </span>
+
+
+                    <span
+                        class="whitespace-nowrap
+                               text-[7px]
+                               font-semibold
+                               uppercase
+                               tracking-[.18em]
+                               text-black/45
+                               sm:text-[8px]">
+
+                        Creative Digital Studio
+
+                    </span>
+
+
+                </div>
+
 
             </div>
 
         </a>
 
 
-        <!-- MOBILE MENU -->
 
-        <input
-            type="checkbox"
-            id="menu-toggle"
-            class="menu-checkbox"
-        >
+        <!-- DESKTOP NAV -->
 
-        <label
-            for="menu-toggle"
-            class="menu-button"
-            aria-label="Open navigation menu"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </label>
+        <nav
+            class="hidden
+                   items-center
+                   gap-8
+                   md:flex">
 
 
-        <!-- NAVIGATION -->
+            <a
+                href="index.html"
+                class="text-sm
+                       font-semibold
+                       text-black/55
+                       transition
+                       hover:text-[#B78A52]">
 
-        <nav class="nav-menu">
-
-            <a href="index.html">
                 Home
+
             </a>
 
-            <a href="about.html">
+
+            <a
+                href="about.html"
+                class="text-sm
+                       font-semibold
+                       text-black/55
+                       transition
+                       hover:text-[#B78A52]">
+
                 About
+
             </a>
 
-            <a href="services.html">
+
+            <a
+                href="services.html"
+                class="text-sm
+                       font-semibold
+                       text-[#B78A52]">
+
                 Services
+
             </a>
 
-            <a href="contact.html">
+
+            <a
+                href="contact.html"
+                class="text-sm
+                       font-semibold
+                       text-black/55
+                       transition
+                       hover:text-[#B78A52]">
+
                 Contact
+
             </a>
+
 
         </nav>
 
 
-        <!-- DESKTOP CTA -->
+
+        <!-- CTA -->
 
         <a
             href="contact.html"
-            class="nav-contact"
-        >
+            class="pro-button
+                   hidden
+                   items-center gap-2
+                   rounded-full
+                   bg-[#11110F]
+                   px-5 py-3
+                   text-sm
+                   font-bold
+                   text-white
+                   md:inline-flex">
 
             Let's Talk
 
-            <i class="fa-solid fa-arrow-right"></i>
+            <i
+                class="fa-solid
+                       fa-arrow-right
+                       text-xs">
+
+            </i>
 
         </a>
+
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            class="grid h-10 w-10
+                   shrink-0
+                   place-items-center
+                   rounded-xl
+                   border border-black/10
+                   bg-white
+                   md:hidden">
+
+
+            <div
+                class="space-y-1.5">
+
+
+                <span
+                    class="block h-0.5
+                           w-5
+                           bg-[#11110F]">
+
+                </span>
+
+
+                <span
+                    class="block h-0.5
+                           w-5
+                           bg-[#11110F]">
+
+                </span>
+
+
+                <span
+                    class="block h-0.5
+                           w-5
+                           bg-[#11110F]">
+
+                </span>
+
+
+            </div>
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        id="mobileMenu"
+        class="mobile-menu
+               mx-3 mb-3
+               rounded-2xl
+               border border-black/10
+               bg-white
+               shadow-soft
+               md:hidden">
+
+
+        <nav
+            class="p-3">
+
+
+            <a
+                href="index.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       hover:bg-black/5">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       hover:bg-black/5">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="mobile-link
+                       block rounded-xl
+                       bg-[#B78A52]/10
+                       px-4 py-3.5
+                       font-semibold
+                       text-[#9A703F]">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       hover:bg-black/5">
+
+                Contact
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mobile-link
+                       mt-2 block
+                       rounded-xl
+                       bg-[#11110F]
+                       px-4 py-3.5
+                       text-center
+                       font-bold
+                       text-white">
+
+                Start Your Project
+
+            </a>
+
+
+        </nav>
 
     </div>
 
@@ -147,250 +913,212 @@
 
 
 <!-- =====================================================
-     SERVICES HERO
-===================================================== -->
+     MAIN
+====================================================== -->
 
-<section class="page-hero">
-
-    <div class="container">
-
-        <span class="section-tag">
-            OUR SERVICES
-        </span>
-
-        <h1>
-            Creative work,
-            <span>made simple.</span>
-        </h1>
-
-        <p>
-            From social media designs to websites,
-            we create clean and professional digital
-            solutions for your brand.
-        </p>
-
-    </div>
-
-</section>
+<main>
 
 
 
 <!-- =====================================================
-     SERVICES
-===================================================== -->
+     HERO
+====================================================== -->
 
-<section class="section services">
-
-    <div class="container">
-
-
-        <span class="section-tag">
-            WHAT WE DO
-        </span>
-
-
-        <h2>
-            Services for your
-            <span>digital presence.</span>
-        </h2>
+<section
+    class="relative
+           overflow-hidden
+           pb-16
+           pt-32
+           sm:pb-24
+           sm:pt-40
+           lg:pb-28">
 
 
-        <p class="section-description">
+    <!-- BACKGROUND -->
 
-            Choose what you need. We focus on simple,
-            attractive and useful designs that help your
-            brand look professional online.
+    <div
+        class="pointer-events-none
+               absolute
+               -right-40
+               top-10
+               h-96
+               w-96
+               rounded-full
+               bg-[#D8BD96]/20
+               blur-3xl">
 
-        </p>
+    </div>
+
+
+    <div
+        class="pointer-events-none
+               absolute
+               -left-40
+               bottom-0
+               h-96
+               w-96
+               rounded-full
+               bg-[#E7DDD0]/70
+               blur-3xl">
+
+    </div>
 
 
 
-        <!-- SERVICES LIST -->
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
 
-        <div class="services-list">
+
+        <div
+            class="reveal
+                   max-w-4xl">
 
 
-            <!-- SERVICE 01 -->
+            <div
+                class="mb-6
+                       inline-flex
+                       items-center
+                       gap-2
+                       rounded-full
+                       border border-black/10
+                       bg-white/70
+                       px-4 py-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.18em]
+                       text-[#9A703F]">
 
-            <div class="service-card">
 
-                <div class="service-icon">
+                <span
+                    class="h-1.5 w-1.5
+                           rounded-full
+                           bg-[#B78A52]">
 
-                    <i class="fa-solid fa-pen-nib"></i>
-
-                </div>
-
-                <div class="service-text">
-
-                    <h3>
-                        Logo Design
-                    </h3>
-
-                    <p>
-                        Clean and memorable logos
-                        designed for your brand.
-                    </p>
-
-                </div>
-
-                <span class="service-number">
-                    01
                 </span>
+
+
+                What We Do
 
             </div>
 
 
 
-            <!-- SERVICE 02 -->
+            <h1
+                class="service-title
+                       font-serif
+                       text-5xl
+                       font-semibold
+                       leading-[.98]
+                       tracking-[-.045em]
+                       sm:text-7xl
+                       lg:text-[6.5rem]">
 
-            <div class="service-card">
 
-                <div class="service-icon">
+                Creative services
 
-                    <i class="fa-brands fa-instagram"></i>
+                <br>
 
-                </div>
+                for brands that
 
-                <div class="service-text">
+                <em
+                    class="text-[#B78A52]">
 
-                    <h3>
-                        Social Media Design
-                    </h3>
+                    matter.
 
-                    <p>
-                        Attractive posts, stories and
-                        promotional designs for social media.
-                    </p>
+                </em>
 
-                </div>
 
-                <span class="service-number">
-                    02
-                </span>
-
-            </div>
+            </h1>
 
 
 
-            <!-- SERVICE 03 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-
-                    <i class="fa-solid fa-image"></i>
-
-                </div>
-
-                <div class="service-text">
-
-                    <h3>
-                        Posters & Banners
-                    </h3>
-
-                    <p>
-                        Professional posters and banners
-                        for promotions and events.
-                    </p>
-
-                </div>
-
-                <span class="service-number">
-                    03
-                </span>
-
-            </div>
+            <p
+                class="mt-7
+                       max-w-2xl
+                       text-[15px]
+                       leading-7
+                       text-black/55
+                       sm:text-lg
+                       sm:leading-8">
 
 
-
-            <!-- SERVICE 04 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-
-                    <i class="fa-solid fa-utensils"></i>
-
-                </div>
-
-                <div class="service-text">
-
-                    <h3>
-                        Menu Cards
-                    </h3>
-
-                    <p>
-                        Modern and easy-to-read menu
-                        designs for restaurants and businesses.
-                    </p>
-
-                </div>
-
-                <span class="service-number">
-                    04
-                </span>
-
-            </div>
+                From brand identity to websites and
+                visual content, we create digital work
+                that helps businesses look professional,
+                communicate clearly and stand out.
 
 
-
-            <!-- SERVICE 05 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-
-                    <i class="fa-solid fa-laptop-code"></i>
-
-                </div>
-
-                <div class="service-text">
-
-                    <h3>
-                        Website Design
-                    </h3>
-
-                    <p>
-                        Simple, responsive and professional
-                        websites for small businesses and brands.
-                    </p>
-
-                </div>
-
-                <span class="service-number">
-                    05
-                </span>
-
-            </div>
+            </p>
 
 
+            <div
+                class="mt-8
+                       flex
+                       flex-col
+                       gap-3
+                       sm:flex-row">
 
-            <!-- SERVICE 06 -->
 
-            <div class="service-card">
+                <a
+                    href="#services"
+                    class="pro-button
+                           inline-flex
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-[#11110F]
+                           px-7 py-4
+                           text-sm
+                           font-bold
+                           text-white">
 
-                <div class="service-icon">
 
-                    <i class="fa-brands fa-google"></i>
+                    Explore Services
 
-                </div>
+                    <i
+                        class="fa-solid
+                               fa-arrow-down
+                               text-xs">
 
-                <div class="service-text">
+                    </i>
 
-                    <h3>
-                        Google Business Profile
-                    </h3>
 
-                    <p>
-                        Help your business build a better
-                        presence on Google Search and Maps.
-                    </p>
+                </a>
 
-                </div>
 
-                <span class="service-number">
-                    06
-                </span>
+                <a
+                    href="contact.html"
+                    class="pro-button
+                           inline-flex
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           border border-black/10
+                           bg-white
+                           px-7 py-4
+                           text-sm
+                           font-bold">
+
+
+                    Get a Quote
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+
+                </a>
+
 
             </div>
 
@@ -404,73 +1132,1597 @@
 
 
 <!-- =====================================================
-     WHY CHOOSE US
-===================================================== -->
+     SERVICES
+====================================================== -->
 
-<section class="section why-us">
-
-    <div class="container">
-
-        <span class="section-tag">
-            WHY HANU DIGITAL HUB
-        </span>
-
-        <h2>
-            Simple design.
-            <span>Better presence.</span>
-        </h2>
-
-        <p>
-            We keep our work clean, practical and
-            easy to understand. Every project is created
-            with your brand and audience in mind.
-        </p>
+<section
+    id="services"
+    class="bg-white
+           py-20
+           sm:py-24
+           lg:py-32">
 
 
-        <div class="why-points">
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
 
-            <div>
 
-                <i class="fa-solid fa-check"></i>
+        <!-- HEADING -->
 
-                <span>
-                    Clean & professional design
-                </span>
-
-            </div>
+        <div
+            class="reveal
+                   flex
+                   flex-col
+                   gap-5
+                   md:flex-row
+                   md:items-end
+                   md:justify-between">
 
 
             <div>
 
-                <i class="fa-solid fa-check"></i>
 
-                <span>
-                    Mobile-friendly websites
-                </span>
+                <p
+                    class="text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#A07443]">
+
+                    Our Expertise
+
+                </p>
+
+
+                <h2
+                    class="mt-3
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           leading-tight
+                           sm:text-5xl">
+
+                    What we can
+
+                    <em
+                        class="text-[#B78A52]">
+
+                        create for you.
+
+                    </em>
+
+                </h2>
+
 
             </div>
+
+
+            <p
+                class="max-w-md
+                       text-sm
+                       leading-7
+                       text-black/45">
+
+                Choose one service or combine multiple
+                services to create a complete digital
+                presence for your brand.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- SERVICE GRID -->
+
+        <div
+            class="mt-12
+                   grid
+                   gap-5
+                   sm:grid-cols-2
+                   lg:grid-cols-3">
+
+
+            <!-- =================================================
+                 WEBSITE
+            ================================================== -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-[26px]
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="service-icon
+                           relative z-10
+                           grid
+                           h-14
+                           w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#11110F]
+                           text-xl
+                           text-[#D8BD96]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-laptop-code">
+
+                    </i>
+
+
+                </div>
+
+
+                <p
+                    class="relative z-10
+                           mt-7
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.15em]
+                           text-[#A07443]">
+
+                    01 / Digital
+
+                </p>
+
+
+                <h3
+                    class="relative z-10
+                           mt-2
+                           text-2xl
+                           font-extrabold">
+
+                    Website Design
+
+                </h3>
+
+
+                <p
+                    class="relative z-10
+                           mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Modern, responsive and professional
+                    websites designed around your brand,
+                    audience and business goals.
+
+                </p>
+
+
+                <ul
+                    class="relative z-10
+                           mt-6
+                           space-y-3
+                           text-sm
+                           text-black/55">
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Mobile-first design
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Responsive layouts
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Smooth interactions
+
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="contact.html"
+                    class="relative z-10
+                           mt-7
+                           inline-flex
+                           items-center
+                           gap-2
+                           text-sm
+                           font-bold
+                           text-[#9A703F]">
+
+                    Discuss Website
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 BRANDING
+            ================================================== -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-[26px]
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="service-icon
+                           relative z-10
+                           grid
+                           h-14
+                           w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/15
+                           text-xl
+                           text-[#9A703F]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-fingerprint">
+
+                    </i>
+
+
+                </div>
+
+
+                <p
+                    class="relative z-10
+                           mt-7
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.15em]
+                           text-[#A07443]">
+
+                    02 / Identity
+
+                </p>
+
+
+                <h3
+                    class="relative z-10
+                           mt-2
+                           text-2xl
+                           font-extrabold">
+
+                    Brand Identity
+
+                </h3>
+
+
+                <p
+                    class="relative z-10
+                           mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Build a recognizable identity with
+                    thoughtful visual direction, colors,
+                    typography and brand assets.
+
+                </p>
+
+
+                <ul
+                    class="relative z-10
+                           mt-6
+                           space-y-3
+                           text-sm
+                           text-black/55">
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Brand direction
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Visual system
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Brand assets
+
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="contact.html"
+                    class="relative z-10
+                           mt-7
+                           inline-flex
+                           items-center
+                           gap-2
+                           text-sm
+                           font-bold
+                           text-[#9A703F]">
+
+                    Build Your Brand
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 LOGO DESIGN
+            ================================================== -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-[26px]
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="service-icon
+                           relative z-10
+                           grid
+                           h-14
+                           w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#11110F]
+                           text-xl
+                           text-[#D8BD96]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-pen-nib">
+
+                    </i>
+
+
+                </div>
+
+
+                <p
+                    class="relative z-10
+                           mt-7
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.15em]
+                           text-[#A07443]">
+
+                    03 / Visual
+
+                </p>
+
+
+                <h3
+                    class="relative z-10
+                           mt-2
+                           text-2xl
+                           font-extrabold">
+
+                    Logo Design
+
+                </h3>
+
+
+                <p
+                    class="relative z-10
+                           mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Memorable logos designed to give your
+                    business a distinctive and professional
+                    visual identity.
+
+                </p>
+
+
+                <ul
+                    class="relative z-10
+                           mt-6
+                           space-y-3
+                           text-sm
+                           text-black/55">
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Custom concepts
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Modern aesthetics
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Digital-ready files
+
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="contact.html"
+                    class="relative z-10
+                           mt-7
+                           inline-flex
+                           items-center
+                           gap-2
+                           text-sm
+                           font-bold
+                           text-[#9A703F]">
+
+                    Design My Logo
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 POSTER
+            ================================================== -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-[26px]
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="service-icon
+                           relative z-10
+                           grid
+                           h-14
+                           w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/15
+                           text-xl
+                           text-[#9A703F]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-image">
+
+                    </i>
+
+
+                </div>
+
+
+                <p
+                    class="relative z-10
+                           mt-7
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.15em]
+                           text-[#A07443]">
+
+                    04 / Graphics
+
+                </p>
+
+
+                <h3
+                    class="relative z-10
+                           mt-2
+                           text-2xl
+                           font-extrabold">
+
+                    Poster Design
+
+                </h3>
+
+
+                <p
+                    class="relative z-10
+                           mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Eye-catching posters and promotional
+                    graphics designed to communicate your
+                    message quickly.
+
+                </p>
+
+
+                <ul
+                    class="relative z-10
+                           mt-6
+                           space-y-3
+                           text-sm
+                           text-black/55">
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Promotional graphics
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Social media creatives
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Event designs
+
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="contact.html"
+                    class="relative z-10
+                           mt-7
+                           inline-flex
+                           items-center
+                           gap-2
+                           text-sm
+                           font-bold
+                           text-[#9A703F]">
+
+                    Create a Poster
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SOCIAL MEDIA
+            ================================================== -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-[26px]
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="service-icon
+                           relative z-10
+                           grid
+                           h-14
+                           w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#11110F]
+                           text-xl
+                           text-[#D8BD96]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-hashtag">
+
+                    </i>
+
+
+                </div>
+
+
+                <p
+                    class="relative z-10
+                           mt-7
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.15em]
+                           text-[#A07443]">
+
+                    05 / Social
+
+                </p>
+
+
+                <h3
+                    class="relative z-10
+                           mt-2
+                           text-2xl
+                           font-extrabold">
+
+                    Social Media Design
+
+                </h3>
+
+
+                <p
+                    class="relative z-10
+                           mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Consistent social media visuals that
+                    make your brand look polished across
+                    every platform.
+
+                </p>
+
+
+                <ul
+                    class="relative z-10
+                           mt-6
+                           space-y-3
+                           text-sm
+                           text-black/55">
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Instagram creatives
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Campaign visuals
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Content templates
+
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="contact.html"
+                    class="relative z-10
+                           mt-7
+                           inline-flex
+                           items-center
+                           gap-2
+                           text-sm
+                           font-bold
+                           text-[#9A703F]">
+
+                    Grow Your Presence
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 DIGITAL SOLUTIONS
+            ================================================== -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-[26px]
+                       border border-black/10
+                       bg-[#F7F5F0]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="service-icon
+                           relative z-10
+                           grid
+                           h-14
+                           w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#B78A52]/15
+                           text-xl
+                           text-[#9A703F]">
+
+
+                    <i
+                        class="fa-solid
+                               fa-layer-group">
+
+                    </i>
+
+
+                </div>
+
+
+                <p
+                    class="relative z-10
+                           mt-7
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.15em]
+                           text-[#A07443]">
+
+                    06 / Creative
+
+                </p>
+
+
+                <h3
+                    class="relative z-10
+                           mt-2
+                           text-2xl
+                           font-extrabold">
+
+                    Digital Solutions
+
+                </h3>
+
+
+                <p
+                    class="relative z-10
+                           mt-3
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Flexible creative solutions tailored
+                    to unique digital projects and
+                    communication needs.
+
+                </p>
+
+
+                <ul
+                    class="relative z-10
+                           mt-6
+                           space-y-3
+                           text-sm
+                           text-black/55">
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Creative consultation
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Digital assets
+
+                    </li>
+
+
+                    <li class="flex gap-2">
+
+                        <i
+                            class="fa-solid
+                                   fa-check
+                                   mt-1
+                                   text-[#B78A52]">
+
+                        </i>
+
+                        Custom projects
+
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="contact.html"
+                    class="relative z-10
+                           mt-7
+                           inline-flex
+                           items-center
+                           gap-2
+                           text-sm
+                           font-bold
+                           text-[#9A703F]">
+
+                    Start a Project
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
+
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURED WORK
+====================================================== -->
+
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
+
+
+        <div
+            class="reveal
+                   flex
+                   flex-col
+                   gap-4
+                   sm:flex-row
+                   sm:items-end
+                   sm:justify-between">
 
 
             <div>
 
-                <i class="fa-solid fa-check"></i>
 
-                <span>
-                    Simple communication
-                </span>
+                <p
+                    class="text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#A07443]">
+
+                    Selected Work
+
+                </p>
+
+
+                <h2
+                    class="mt-3
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           sm:text-5xl">
+
+                    A glimpse of
+
+                    <em
+                        class="text-[#B78A52]">
+
+                        our work.
+
+                    </em>
+
+                </h2>
+
 
             </div>
 
 
-            <div>
+            <a
+                href="index.html#projects"
+                class="inline-flex
+                       items-center
+                       gap-2
+                       text-sm
+                       font-bold
+                       text-[#9A703F]">
 
-                <i class="fa-solid fa-check"></i>
+                View Projects
 
-                <span>
-                    Creative solutions
+                <i
+                    class="fa-solid
+                           fa-arrow-right
+                           text-xs">
+
+                </i>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- PROJECT GRID -->
+
+        <div
+            class="mt-10
+                   grid
+                   gap-5
+                   md:grid-cols-3">
+
+
+            <!-- PROJECT -->
+
+            <article
+                class="project-card
+                       reveal
+                       overflow-hidden
+                       rounded-[26px]
+                       bg-white
+                       shadow-soft">
+
+
+                <div
+                    class="aspect-[4/3]
+                           overflow-hidden
+                           bg-black/5">
+
+
+                    <img
+                        src="images/project.png"
+                        alt="Hanu Digital Hub project"
+                        loading="lazy"
+                        class="project-image
+                               h-full
+                               w-full
+                               object-cover">
+
+                </div>
+
+
+                <div
+                    class="p-5">
+
+
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.15em]
+                               text-[#A07443]">
+
+                        Digital Design
+
+                    </p>
+
+
+                    <h3
+                        class="mt-2
+                               font-bold">
+
+                        Creative Project
+
+                    </h3>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- PROJECT -->
+
+            <article
+                class="project-card
+                       reveal
+                       overflow-hidden
+                       rounded-[26px]
+                       bg-white
+                       shadow-soft">
+
+
+                <div
+                    class="aspect-[4/3]
+                           overflow-hidden
+                           bg-black/5">
+
+
+                    <img
+                        src="images/project2.png"
+                        alt="Hanu Digital Hub project"
+                        loading="lazy"
+                        class="project-image
+                               h-full
+                               w-full
+                               object-cover">
+
+                </div>
+
+
+                <div
+                    class="p-5">
+
+
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.15em]
+                               text-[#A07443]">
+
+                        Brand Design
+
+                    </p>
+
+
+                    <h3
+                        class="mt-2
+                               font-bold">
+
+                        Visual Identity
+
+                    </h3>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- PROJECT -->
+
+            <article
+                class="project-card
+                       reveal
+                       overflow-hidden
+                       rounded-[26px]
+                       bg-white
+                       shadow-soft">
+
+
+                <div
+                    class="aspect-[4/3]
+                           overflow-hidden
+                           bg-black/5">
+
+
+                    <img
+                        src="images/logodesign.jpeg"
+                        alt="Hanu Digital Hub logo design"
+                        loading="lazy"
+                        class="project-image
+                               h-full
+                               w-full
+                               object-cover">
+
+                </div>
+
+
+                <div
+                    class="p-5">
+
+
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.15em]
+                               text-[#A07443]">
+
+                        Logo Design
+
+                    </p>
+
+
+                    <h3
+                        class="mt-2
+                               font-bold">
+
+                        Brand Mark
+
+                    </h3>
+
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROCESS
+====================================================== -->
+
+<section
+    class="bg-[#11110F]
+           py-20
+           text-white
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
+
+
+        <div
+            class="reveal
+                   max-w-2xl">
+
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                How We Work
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       leading-tight
+                       sm:text-5xl">
+
+
+                From idea to
+
+                <em
+                    class="text-[#D8BD96]">
+
+                    execution.
+
+                </em>
+
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div
+            class="mt-12
+                   grid
+                   gap-4
+                   md:grid-cols-4">
+
+
+            <!-- STEP -->
+
+            <div
+                class="reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/5
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#D8BD96]">
+
+                    01
+
                 </span>
 
+
+                <h3
+                    class="mt-6
+                           font-bold">
+
+                    Discover
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/40">
+
+                    Understand the brand,
+                    problem and audience.
+
+                </p>
+
             </div>
+
+
+
+            <!-- STEP -->
+
+            <div
+                class="reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/5
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#D8BD96]">
+
+                    02
+
+                </span>
+
+
+                <h3
+                    class="mt-6
+                           font-bold">
+
+                    Strategy
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/40">
+
+                    Define the visual direction
+                    and creative approach.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- STEP -->
+
+            <div
+                class="reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/5
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#D8BD96]">
+
+                    03
+
+                </span>
+
+
+                <h3
+                    class="mt-6
+                           font-bold">
+
+                    Design
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/40">
+
+                    Create polished visuals and
+                    digital experiences.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- STEP -->
+
+            <div
+                class="reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/5
+                       p-6">
+
+
+                <span
+                    class="font-serif
+                           text-4xl
+                           text-[#D8BD96]">
+
+                    04
+
+                </span>
+
+
+                <h3
+                    class="mt-6
+                           font-bold">
+
+                    Deliver
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/40">
+
+                    Finalize, refine and deliver
+                    production-ready work.
+
+                </p>
+
+            </div>
+
 
         </div>
 
@@ -482,60 +2734,137 @@
 
 <!-- =====================================================
      CTA
-===================================================== -->
+====================================================== -->
 
-<section class="section contact">
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
 
-    <div class="container">
 
-        <div class="contact-box">
+    <div
+        class="reveal
+               mx-auto
+               max-w-6xl
+               px-5
+               sm:px-6
+               lg:px-8">
 
-            <div class="contact-content">
 
-                <span class="section-tag">
-                    HAVE A PROJECT?
-                </span>
+        <div
+            class="relative
+                   overflow-hidden
+                   rounded-[26px]
+                   bg-white
+                   px-6
+                   py-14
+                   text-center
+                   shadow-soft
+                   sm:rounded-[2rem]
+                   sm:px-12
+                   sm:py-20">
 
-                <h2>
-                    Let's work on your
-                    <span>idea.</span>
-                </h2>
 
-                <p>
-                    Tell us what you need and we will
-                    get back to you through email or
-                    Instagram.
-                </p>
+            <div
+                class="pointer-events-none
+                       absolute
+                       -right-20
+                       -top-20
+                       h-60
+                       w-60
+                       rounded-full
+                       bg-[#D8BD96]/30
+                       blur-3xl">
 
             </div>
 
 
-            <div class="hero-buttons">
+            <div
+                class="relative z-10">
+
+
+                <p
+                    class="text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#A07443]">
+
+                    Have a Project?
+
+                </p>
+
+
+                <h2
+                    class="mt-4
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           leading-tight
+                           sm:text-6xl">
+
+
+                    Let's create something
+
+                    <br>
+
+                    <em
+                        class="text-[#B78A52]">
+
+                        remarkable.
+
+                    </em>
+
+
+                </h2>
+
+
+                <p
+                    class="mx-auto
+                           mt-5
+                           max-w-xl
+                           text-sm
+                           leading-7
+                           text-black/45">
+
+
+                    Tell us what you're building and
+                    we'll help you turn the idea into
+                    a professional digital experience.
+
+
+                </p>
+
 
                 <a
                     href="contact.html"
-                    class="btn btn-primary"
-                >
+                    class="pro-button
+                           mt-8
+                           inline-flex
+                           w-full
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-[#11110F]
+                           px-7 py-4
+                           text-sm
+                           font-bold
+                           text-white
+                           sm:w-auto">
 
-                    Contact Us
 
-                    <i class="fa-solid fa-arrow-right"></i>
+                    Start Your Project
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right">
+
+                    </i>
+
 
                 </a>
 
-
-                <a
-                    href="https://www.instagram.com/hanudigitalhub/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-instagram"
-                >
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                    Instagram DM
-
-                </a>
 
             </div>
 
@@ -547,78 +2876,172 @@
 
 
 
+</main>
+
+
+
 <!-- =====================================================
      FOOTER
-===================================================== -->
+====================================================== -->
 
-<footer class="footer">
+<footer
+    class="bg-[#11110F]
+           text-white">
 
-    <div class="container footer-container">
+
+    <div
+        class="mx-auto
+               grid
+               max-w-7xl
+               gap-10
+               px-5
+               py-14
+               sm:px-6
+               md:grid-cols-3
+               lg:px-8">
 
 
         <!-- BRAND -->
 
-        <div class="footer-brand">
+        <div>
+
 
             <a
                 href="index.html"
-                class="footer-logo"
-            >
+                class="flex
+                       items-center
+                       gap-3">
 
-                <div class="footer-logo-mark">
 
-                    <img
-                        src="images/logo.jpg"
-                        alt="Hanu Digital Hub Logo"
-                    >
+                <img
+                    src="images/logo.jpg"
+                    alt="Hanu Digital Hub"
+                    class="h-11
+                           w-11
+                           rounded-xl
+                           object-cover">
 
-                </div>
 
                 <div>
 
-                    <strong>
+
+                    <strong
+                        class="block
+                               text-[11px]
+                               tracking-[.17em]">
+
                         HANU DIGITAL HUB
+
                     </strong>
 
-                    <span>
+
+                    <small
+                        class="text-white/40">
+
                         Creative Digital Studio
-                    </span>
+
+                    </small>
+
 
                 </div>
 
+
             </a>
 
-            <p>
-                Creative. Simple. Professional.
+
+            <p
+                class="mt-5
+                       max-w-sm
+                       text-sm
+                       leading-7
+                       text-white/40">
+
+
+                Creative websites, branding and
+                digital design made to help your
+                brand look professional and memorable.
+
+
             </p>
+
 
         </div>
 
 
 
-        <!-- QUICK LINKS -->
+        <!-- EXPLORE -->
 
-        <div class="footer-links">
+        <div>
 
-            <h4>
-                Quick Links
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                Explore
+
             </h4>
 
-            <a href="index.html">
+
+            <a
+                href="index.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
                 Home
+
             </a>
 
-            <a href="about.html">
+
+            <a
+                href="about.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
                 About
+
             </a>
 
-            <a href="services.html">
+
+            <a
+                href="services.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
                 Services
+
             </a>
 
-            <a href="contact.html">
+
+            <a
+                href="contact.html"
+                class="block
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
                 Contact
+
             </a>
+
 
         </div>
 
@@ -626,59 +3049,441 @@
 
         <!-- CONNECT -->
 
-        <div class="footer-connect">
+        <div>
 
-            <h4>
-                Let's Connect
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                Connect
+
             </h4>
 
+
             <a
-    href="https://www.instagram.com/HANU_DIGITALHUB/"
+                href="https://www.instagram.com/HANU_DIGITALHUB/"
                 target="_blank"
                 rel="noopener noreferrer"
-            >
+                class="flex
+                       items-center
+                       gap-2
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
 
-                <i class="fa-brands fa-instagram"></i>
 
-                Instagram DM
+                <i
+                    class="fa-brands
+                           fa-instagram">
+
+                </i>
+
+
+                Instagram
+
 
             </a>
+
 
             <a
                 href="mailto:hanudigitalhubofficial@gmail.com"
-            >
+                class="flex
+                       items-center
+                       gap-2
+                       py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
 
-                <i class="fa-solid fa-envelope"></i>
 
-                Email Us
+                <i
+                    class="fa-solid
+                           fa-envelope">
+
+                </i>
+
+
+                Email
+
 
             </a>
 
+
         </div>
+
 
     </div>
 
 
 
-    <!-- FOOTER BOTTOM -->
+    <!-- COPYRIGHT -->
 
-    <div class="footer-bottom">
+    <div
+        class="border-t
+               border-white/10">
 
-        <div class="container footer-bottom-inner">
 
-            <p>
-                © 2026 Hanu Digital Hub
-            </p>
+        <div
+            class="mx-auto
+                   flex
+                   max-w-7xl
+                   flex-col
+                   gap-2
+                   px-5
+                   py-5
+                   text-xs
+                   text-white/30
+                   sm:flex-row
+                   sm:items-center
+                   sm:justify-between
+                   sm:px-6
+                   lg:px-8">
+
 
             <span>
-                All rights reserved.
+
+                ©
+                <span id="year"></span>
+                Hanu Digital Hub
+
             </span>
 
+
+            <span>
+
+                All rights reserved.
+
+            </span>
+
+
         </div>
+
 
     </div>
 
 </footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+    /* =================================================
+       PRELOADER
+    ================================================= */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            const preloader =
+                document.getElementById(
+                    "preloader"
+                );
+
+
+            setTimeout(
+                function () {
+
+                    preloader.classList.add(
+                        "hide"
+                    );
+
+                },
+                400
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       MOBILE MENU
+    ================================================= */
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+
+    const mobileMenu =
+        document.getElementById(
+            "mobileMenu"
+        );
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            const isOpen =
+                mobileMenu.classList.toggle(
+                    "open"
+                );
+
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+
+            /* Change hamburger */
+
+            const lines =
+                menuButton.querySelectorAll(
+                    "span"
+                );
+
+
+            if (isOpen) {
+
+                lines[0].style.transform =
+                    "translateY(8px) rotate(45deg)";
+
+                lines[1].style.opacity =
+                    "0";
+
+                lines[2].style.transform =
+                    "translateY(-8px) rotate(-45deg)";
+
+            } else {
+
+                lines[0].style.transform =
+                    "";
+
+                lines[1].style.opacity =
+                    "";
+
+                lines[2].style.transform =
+                    "";
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================================
+       CLOSE MOBILE MENU
+    ================================================= */
+
+    document
+        .querySelectorAll(".mobile-link")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        mobileMenu.classList.remove(
+                            "open"
+                        );
+
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                        const lines =
+                            menuButton.querySelectorAll(
+                                "span"
+                            );
+
+
+                        lines[0].style.transform =
+                            "";
+
+                        lines[1].style.opacity =
+                            "";
+
+                        lines[2].style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       SCROLL REVEAL
+    ================================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.10
+            }
+
+        );
+
+
+    revealElements.forEach(
+        function (element) {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       CURRENT YEAR
+    ================================================= */
+
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
+
+
+
+    /* =================================================
+       BUTTON MOUSE EFFECT
+    ================================================= */
+
+    document
+        .querySelectorAll(".pro-button")
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "mousemove",
+                    function (event) {
+
+                        if (
+                            window.innerWidth < 768
+                        ) {
+                            return;
+                        }
+
+
+                        const rect =
+                            button.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left -
+                            rect.width / 2;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top -
+                            rect.height / 2;
+
+
+                        button.style.transform =
+                            `translate(
+                                ${x * .03}px,
+                                ${y * .03}px
+                            )`;
+
+                    }
+                );
+
+
+                button.addEventListener(
+                    "mouseleave",
+                    function () {
+
+                        button.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       ESCAPE KEY
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                mobileMenu.classList.remove(
+                    "open"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+
+</script>
 
 
 </body>

@@ -3,6 +3,10 @@
 
 <head>
 
+    <!-- =====================================================
+         BASIC META
+    ====================================================== -->
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,32 +14,656 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Contact | Hanu Digital Hub</title>
-
     <meta
         name="description"
-        content="Contact Hanu Digital Hub for creative digital design and website services."
+        content="Contact Hanu Digital Hub for professional websites, branding, logo design, posters, social media creatives and digital design services."
     >
 
-    <!-- Google Fonts -->
+    <meta
+        name="author"
+        content="Hanu Digital Hub"
+    >
+
+    <meta
+        name="theme-color"
+        content="#11110F"
+    >
+
+    <title>Contact | Hanu Digital Hub</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
         rel="stylesheet"
     >
 
-    <!-- Font Awesome -->
+
+    <!-- =====================================================
+         TAILWIND CSS
+    ====================================================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+
+                        gold: "#B78A52",
+
+                        goldLight: "#D8BD96",
+
+                        dark: "#11110F",
+
+                        cream: "#F7F5F0"
+
+                    },
+
+                    fontFamily: {
+
+                        sans: [
+                            "DM Sans",
+                            "sans-serif"
+                        ],
+
+                        serif: [
+                            "Playfair Display",
+                            "serif"
+                        ]
+
+                    },
+
+                    boxShadow: {
+
+                        soft:
+                            "0 25px 70px rgba(17,17,15,.08)",
+
+                        card:
+                            "0 20px 55px rgba(17,17,15,.07)"
+
+                    }
+
+                }
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     >
 
-    <!-- Your CSS -->
 
-    <link rel="stylesheet" href="style.css">
+    <!-- =====================================================
+         CUSTOM STYLE
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           RESET
+        ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: #F7F5F0;
+            color: #11110F;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ::selection {
+            background: #D8BD96;
+            color: #11110F;
+        }
+
+
+        /* =================================================
+           PRELOADER
+        ================================================= */
+
+        #preloader {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #11110F;
+
+            transition:
+                opacity .6s ease,
+                visibility .6s ease;
+
+        }
+
+        #preloader.hide {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+        }
+
+        .loader {
+
+            width: 46px;
+
+            height: 46px;
+
+            border: 3px solid
+                rgba(255,255,255,.15);
+
+            border-top-color:
+                #B78A52;
+
+            border-radius: 50%;
+
+            animation:
+                spin 1s linear infinite;
+
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =================================================
+           FLOATING BACKGROUND
+        ================================================= */
+
+        .orb {
+
+            position: absolute;
+
+            border-radius: 999px;
+
+            pointer-events: none;
+
+            filter: blur(5px);
+
+            animation:
+                floatOrb 7s ease-in-out infinite;
+
+        }
+
+        .orb-one {
+
+            width: 300px;
+
+            height: 300px;
+
+            top: 70px;
+
+            right: -120px;
+
+            background:
+                rgba(216,189,150,.27);
+
+        }
+
+        .orb-two {
+
+            width: 250px;
+
+            height: 250px;
+
+            bottom: 40px;
+
+            left: -120px;
+
+            background:
+                rgba(231,221,208,.75);
+
+            animation-delay:
+                -3s;
+
+        }
+
+        @keyframes floatOrb {
+
+            0%,
+            100% {
+                transform:
+                    translate3d(0,0,0);
+            }
+
+            50% {
+                transform:
+                    translate3d(0,-22px,0);
+            }
+
+        }
+
+
+        /* =================================================
+           REVEAL ANIMATION
+        ================================================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        .reveal-left {
+
+            opacity: 0;
+
+            transform:
+                translateX(-45px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-left.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        .reveal-right {
+
+            opacity: 0;
+
+            transform:
+                translateX(45px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-right.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .site-header {
+
+            transition:
+                background .3s ease,
+                box-shadow .3s ease;
+
+        }
+
+        .site-header.scrolled {
+
+            background:
+                rgba(247,245,240,.94);
+
+            box-shadow:
+                0 12px 35px rgba(17,17,15,.07);
+
+        }
+
+
+        /* =================================================
+           BRAND
+        ================================================= */
+
+        .brand-logo {
+
+            transition:
+                transform .3s ease;
+
+        }
+
+        .brand:hover .brand-logo {
+
+            transform:
+                scale(1.06)
+                rotate(-2deg);
+
+        }
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        .mobile-menu {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height .4s ease,
+                opacity .3s ease;
+
+        }
+
+        .mobile-menu.open {
+
+            max-height: 600px;
+
+            opacity: 1;
+
+        }
+
+
+        /* =================================================
+           CONTACT CARD
+        ================================================= */
+
+        .contact-card {
+
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease;
+
+        }
+
+        .contact-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 25px 65px
+                rgba(17,17,15,.10);
+
+        }
+
+
+        /* =================================================
+           FORM INPUT
+        ================================================= */
+
+        .form-input {
+
+            width: 100%;
+
+            border: 1px solid
+                rgba(17,17,15,.10);
+
+            background:
+                rgba(247,245,240,.65);
+
+            border-radius: 15px;
+
+            padding:
+                14px 16px;
+
+            outline: none;
+
+            color: #11110F;
+
+            font-size: 14px;
+
+            transition:
+                border .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+
+        }
+
+        .form-input::placeholder {
+
+            color:
+                rgba(17,17,15,.35);
+
+        }
+
+        .form-input:focus {
+
+            border-color:
+                rgba(183,138,82,.7);
+
+            background:
+                white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(183,138,82,.10);
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .magnetic-button {
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+        .magnetic-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(17,17,15,.18);
+
+        }
+
+
+        /* =================================================
+           ICON BOX
+        ================================================= */
+
+        .icon-box {
+
+            transition:
+                transform .35s ease,
+                background .35s ease;
+
+        }
+
+        .contact-card:hover .icon-box {
+
+            transform:
+                scale(1.08)
+                rotate(-4deg);
+
+        }
+
+
+        /* =================================================
+           SUCCESS MESSAGE
+        ================================================= */
+
+        #successMessage {
+
+            display: none;
+
+        }
+
+        #successMessage.show {
+
+            display: block;
+
+            animation:
+                successIn .5s ease;
+
+        }
+
+        @keyframes successIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 767px) {
+
+            .hero-title {
+
+                font-size:
+                    clamp(
+                        3rem,
+                        15vw,
+                        4.8rem
+                    );
+
+                line-height:
+                    .96;
+
+                letter-spacing:
+                    -.055em;
+
+            }
+
+            .contact-card:hover {
+
+                transform:
+                    none;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .hero-title {
+
+                font-size:
+                    2.8rem;
+
+            }
+
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .01ms !important;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -44,207 +672,435 @@
 
 
 <!-- =====================================================
+     PRELOADER
+====================================================== -->
+
+<div id="preloader">
+
+    <div class="loader"></div>
+
+</div>
+
+
+
+<!-- =====================================================
      HEADER
-===================================================== -->
+====================================================== -->
 
-<header class="header">
+<header
+    id="siteHeader"
+    class="site-header fixed top-0 left-0 right-0 z-50
+           border-b border-black/5
+           bg-[#F7F5F0]/85
+           backdrop-blur-xl">
 
-    <div class="container nav">
+
+    <div
+        class="mx-auto flex h-[70px]
+               max-w-7xl
+               items-center
+               justify-between
+               px-4
+               sm:h-20
+               sm:px-6
+               lg:px-8">
 
 
-        <!-- BRAND -->
+        <!-- =================================================
+             BRAND
+        ================================================== -->
 
-        <a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="brand flex min-w-0 items-center gap-2.5">
 
-            <div class="brand-mark">
 
-                <img
-                    src="images/logo.jpg"
-                    alt="Hanu Digital Hub Logo"
-                >
+            <img
+                src="images/logo.jpg"
+                alt="Hanu Digital Hub Logo"
+                class="brand-logo h-10 w-10 shrink-0
+                       rounded-xl object-cover
+                       ring-1 ring-black/10
+                       sm:h-11 sm:w-11">
 
-            </div>
 
-            <div class="brand-text">
+            <div class="min-w-0">
 
-                <strong>
-                    HANU DIGITAL HUB
-                </strong>
 
-                <span>
-                    Creative Digital Studio
-                </span>
+                <div
+                    class="whitespace-nowrap
+                           text-[12px]
+                           font-extrabold
+                           tracking-[.09em]
+                           sm:text-[15px]
+                           sm:tracking-[.13em]">
+
+
+                    <span class="text-[#11110F]">
+                        HANU
+                    </span>
+
+                    <span class="text-[#B78A52]">
+                        DIGITAL HUB
+                    </span>
+
+
+                </div>
+
+
+                <div
+                    class="mt-1.5 flex items-center gap-1.5">
+
+
+                    <span
+                        class="h-px w-4 bg-[#B78A52]">
+                    </span>
+
+
+                    <span
+                        class="whitespace-nowrap
+                               text-[7px]
+                               font-semibold
+                               uppercase
+                               tracking-[.17em]
+                               text-black/45
+                               sm:text-[8px]">
+
+                        Creative Digital Studio
+
+                    </span>
+
+
+                </div>
+
 
             </div>
 
         </a>
 
 
-        <!-- MOBILE MENU -->
 
-        <input
-            type="checkbox"
-            id="menu-toggle"
-            class="menu-checkbox"
-        >
+        <!-- =================================================
+             DESKTOP NAV
+        ================================================== -->
 
-        <label
-            for="menu-toggle"
-            class="menu-button"
-            aria-label="Open menu"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </label>
+        <nav
+            class="hidden items-center gap-8 md:flex">
 
 
-        <!-- NAVIGATION -->
+            <a
+                href="index.html"
+                class="text-sm font-semibold
+                       text-black/50
+                       transition
+                       hover:text-[#B78A52]">
 
-        <nav class="nav-menu">
-
-            <a href="index.html">
                 Home
+
             </a>
 
-            <a href="about.html">
+
+            <a
+                href="about.html"
+                class="text-sm font-semibold
+                       text-black/50
+                       transition
+                       hover:text-[#B78A52]">
+
                 About
+
             </a>
 
-            <a href="services.html">
+
+            <a
+                href="services.html"
+                class="text-sm font-semibold
+                       text-black/50
+                       transition
+                       hover:text-[#B78A52]">
+
                 Services
+
             </a>
 
-            <a href="contact.html">
+
+            <a
+                href="contact.html"
+                class="text-sm font-semibold
+                       text-[#B78A52]">
+
                 Contact
+
             </a>
+
 
         </nav>
 
 
-        <!-- DESKTOP BUTTON -->
 
-        <a href="contact.html" class="nav-contact">
+        <!-- =================================================
+             DESKTOP CTA
+        ================================================== -->
+
+        <a
+            href="#contact-form"
+            class="magnetic-button hidden
+                   items-center gap-2
+                   rounded-full
+                   bg-[#11110F]
+                   px-5 py-3
+                   text-sm font-bold
+                   text-white
+                   md:inline-flex">
+
 
             Let's Talk
 
-            <i class="fa-solid fa-arrow-right"></i>
+
+            <i
+                class="fa-solid fa-arrow-right text-xs">
+            </i>
+
 
         </a>
+
+
+
+        <!-- =================================================
+             MOBILE BUTTON
+        ================================================== -->
+
+        <button
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            class="grid h-10 w-10 shrink-0
+                   place-items-center
+                   rounded-xl
+                   border border-black/10
+                   bg-white
+                   md:hidden">
+
+
+            <div class="space-y-1.5">
+
+                <span
+                    class="menu-line block h-0.5 w-5 bg-[#11110F]">
+                </span>
+
+                <span
+                    class="menu-line block h-0.5 w-5 bg-[#11110F]">
+                </span>
+
+                <span
+                    class="menu-line block h-0.5 w-5 bg-[#11110F]">
+                </span>
+
+            </div>
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         MOBILE NAV
+    ================================================== -->
+
+    <div
+        id="mobileMenu"
+        class="mobile-menu mx-3 mb-3
+               rounded-2xl
+               border border-black/10
+               bg-white
+               shadow-soft
+               md:hidden">
+
+
+        <nav class="p-3">
+
+
+            <a
+                href="index.html"
+                class="mobile-link block
+                       rounded-xl px-4 py-3.5
+                       font-semibold
+                       transition hover:bg-black/5">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="mobile-link block
+                       rounded-xl px-4 py-3.5
+                       font-semibold
+                       transition hover:bg-black/5">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="mobile-link block
+                       rounded-xl px-4 py-3.5
+                       font-semibold
+                       transition hover:bg-black/5">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mobile-link block
+                       rounded-xl
+                       bg-[#B78A52]/10
+                       px-4 py-3.5
+                       font-semibold
+                       text-[#9A703F]">
+
+                Contact
+
+            </a>
+
+
+            <a
+                href="#contact-form"
+                class="mobile-link mt-2 block
+                       rounded-xl
+                       bg-[#11110F]
+                       px-4 py-3.5
+                       text-center
+                       font-bold
+                       text-white">
+
+                Start Your Project
+
+            </a>
+
+
+        </nav>
 
     </div>
 
 </header>
 
-<!-- =================================================
-     CONTACT FORM
-================================================= -->
 
-<form
-    id="contactForm"
-    action="https://api.web3forms.com/submit"
-    method="POST"
-    class="contact-form"
->
 
-    <!-- WEB3FORMS ACCESS KEY -->
-    <input
-        type="hidden"
-        name="access_key"
-        value="7d4d250a-5daa-4819-9005-3b24bc211c16"
-    >
+<!-- =====================================================
+     HERO
+====================================================== -->
 
-    <!-- EMAIL SUBJECT -->
-    <input
-        type="hidden"
-        name="subject"
-        value="New Website Enquiry - Hanu Digital Hub"
-    >
+<main>
 
-    <!-- FROM NAME -->
-    <input
-        type="hidden"
-        name="from_name"
-        value="Hanu Digital Hub Website"
-    >
 
-    <!-- SPAM PROTECTION -->
-    <input
-        type="checkbox"
-        name="botcheck"
-        style="display:none;"
-        tabindex="-1"
-        autocomplete="off"
-    >
+<section
+    class="relative overflow-hidden
+           pb-16 pt-32
+           sm:pb-24 sm:pt-40
+           lg:pb-28">
 
-    <!-- NAME -->
-    <div class="form-group">
 
-        <label for="name">
-            Your Name
-        </label>
+    <div class="orb orb-one"></div>
 
-        <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            required
-        >
+    <div class="orb orb-two"></div>
 
-    </div>
 
-    <!-- EMAIL -->
-    <div class="form-group">
+    <div
+        class="relative z-10 mx-auto
+               max-w-7xl
+               px-5 sm:px-6 lg:px-8">
 
-        <label for="email">
-            Email Address
-        </label>
 
-        <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-        >
+        <div
+            class="reveal max-w-4xl">
 
-    </div>
 
-    <!-- MESSAGE -->
-    <div class="form-group">
+            <!-- TAG -->
 
-        <label for="message">
-            Your Message
-        </label>
+            <div
+                class="mb-6 inline-flex
+                       items-center gap-2
+                       rounded-full
+                       border border-black/10
+                       bg-white/70
+                       px-4 py-2
+                       text-[9px]
+                       font-bold
+                       uppercase
+                       tracking-[.18em]
+                       text-[#9A703F]">
 
-        <textarea
-            id="message"
-            name="message"
-            rows="5"
-            placeholder="Tell us what you need..."
-            required
-        ></textarea>
 
-    </div>
+                <span
+                    class="h-1.5 w-1.5
+                           rounded-full
+                           bg-[#B78A52]">
+                </span>
 
-    <!-- SUBMIT -->
-    <button
-        type="submit"
-        class="btn btn-primary form-button"
-    >
-        Send Message
-        <i class="fa-solid fa-paper-plane"></i>
-    </button>
 
-    <p class="form-note">
-        <i class="fa-solid fa-lock"></i>
-        Your message will be sent securely.
-    </p>
+                Contact Hanu Digital Hub
 
-</form>
+
+            </div>
+
+
+
+            <!-- TITLE -->
+
+            <h1
+                class="hero-title
+                       font-serif
+                       text-6xl
+                       font-semibold
+                       leading-[.96]
+                       tracking-[-.05em]
+                       sm:text-7xl
+                       lg:text-[6.5rem]">
+
+
+                Let's build
+
+                <br>
+
+                something
+
+                <em class="text-[#B78A52]">
+                    great.
+                </em>
+
+
+            </h1>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <p
+                class="mt-7 max-w-2xl
+                       text-[15px]
+                       leading-7
+                       text-black/55
+                       sm:text-lg
+                       sm:leading-8">
+
+
+                Have an idea, business or project in mind?
+                Tell us what you need and let's create a
+                professional digital experience together.
+
+
+            </p>
+
 
         </div>
 
@@ -255,173 +1111,1632 @@
 
 
 <!-- =====================================================
-     SIMPLE CTA
-===================================================== -->
+     CONTACT SECTION
+====================================================== -->
 
-<section class="section why-us">
+<section
+    id="contact-form"
+    class="pb-20
+           sm:pb-28
+           lg:pb-32">
 
-    <div class="container">
 
-        <span class="section-tag">
-            PREFER INSTAGRAM?
-        </span>
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5
+               sm:px-6
+               lg:px-8">
 
-        <h2>
-            Just send us a
-            <span>DM.</span>
-        </h2>
 
-        <p>
-            If you prefer Instagram, simply message us
-            directly and tell us what you need.
-        </p>
+        <div
+            class="grid gap-6
+                   lg:grid-cols-[.85fr_1.15fr]">
 
-        <a
-    href="https://www.instagram.com/HANU_DIGITALHUB/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
-            style="margin-top:25px;"
-        >
 
-            <i class="fa-brands fa-instagram"></i>
+            <!-- =================================================
+                 LEFT CONTACT INFO
+            ================================================== -->
 
-            DM on Instagram
+            <div
+                class="reveal-left">
 
-        </a>
+
+                <div
+                    class="rounded-[28px]
+                           bg-[#11110F]
+                           p-7
+                           text-white
+                           shadow-soft
+                           sm:p-9
+                           lg:p-10">
+
+
+                    <span
+                        class="text-[10px]
+                               font-bold
+                               uppercase
+                               tracking-[.2em]
+                               text-[#D8BD96]">
+
+                        Get in touch
+
+                    </span>
+
+
+                    <h2
+                        class="mt-4
+                               font-serif
+                               text-4xl
+                               font-semibold
+                               leading-tight
+                               sm:text-5xl">
+
+
+                        Have a project
+
+                        <br>
+
+                        in mind?
+
+
+                    </h2>
+
+
+                    <p
+                        class="mt-5
+                               text-sm
+                               leading-7
+                               text-white/45">
+
+
+                        Whether you need a website,
+                        logo, poster, branding or
+                        digital design, we'd love to
+                        hear about your idea.
+
+
+                    </p>
+
+
+
+                    <!-- CONTACT ITEMS -->
+
+                    <div
+                        class="mt-9
+                               space-y-4">
+
+
+                        <!-- EMAIL -->
+
+                        <a
+                            href="mailto:hanudigitalhubofficial@gmail.com"
+                            class="contact-card
+                                   flex items-center
+                                   gap-4
+                                   rounded-2xl
+                                   border border-white/10
+                                   bg-white/5
+                                   p-4">
+
+
+                            <div
+                                class="icon-box
+                                       grid h-12 w-12
+                                       shrink-0
+                                       place-items-center
+                                       rounded-xl
+                                       bg-[#D8BD96]/10
+                                       text-[#D8BD96]">
+
+
+                                <i
+                                    class="fa-solid
+                                           fa-envelope">
+                                </i>
+
+
+                            </div>
+
+
+                            <div class="min-w-0">
+
+
+                                <span
+                                    class="block
+                                           text-[9px]
+                                           font-bold
+                                           uppercase
+                                           tracking-[.15em]
+                                           text-white/35">
+
+                                    Email
+
+                                </span>
+
+
+                                <strong
+                                    class="mt-1 block
+                                           break-all
+                                           text-sm
+                                           font-semibold
+                                           text-white">
+
+                                    hanudigitalhubofficial@gmail.com
+
+                                </strong>
+
+
+                            </div>
+
+
+                        </a>
+
+
+
+                        <!-- INSTAGRAM -->
+
+                        <a
+                            href="https://www.instagram.com/HANU_DIGITALHUB/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="contact-card
+                                   flex items-center
+                                   gap-4
+                                   rounded-2xl
+                                   border border-white/10
+                                   bg-white/5
+                                   p-4">
+
+
+                            <div
+                                class="icon-box
+                                       grid h-12 w-12
+                                       shrink-0
+                                       place-items-center
+                                       rounded-xl
+                                       bg-[#D8BD96]/10
+                                       text-[#D8BD96]">
+
+
+                                <i
+                                    class="fa-brands
+                                           fa-instagram">
+                                </i>
+
+
+                            </div>
+
+
+                            <div>
+
+
+                                <span
+                                    class="block
+                                           text-[9px]
+                                           font-bold
+                                           uppercase
+                                           tracking-[.15em]
+                                           text-white/35">
+
+                                    Instagram
+
+                                </span>
+
+
+                                <strong
+                                    class="mt-1 block
+                                           text-sm
+                                           font-semibold
+                                           text-white">
+
+                                    @HANU_DIGITALHUB
+
+                                </strong>
+
+
+                            </div>
+
+
+                        </a>
+
+
+                    </div>
+
+
+
+                    <!-- SMALL NOTE -->
+
+                    <div
+                        class="mt-9
+                               border-t
+                               border-white/10
+                               pt-6">
+
+
+                        <p
+                            class="flex gap-3
+                                   text-xs
+                                   leading-6
+                                   text-white/35">
+
+
+                            <i
+                                class="fa-solid
+                                       fa-circle-check
+                                       mt-1
+                                       text-[#D8BD96]">
+                            </i>
+
+
+                            We respond to project enquiries
+                            as soon as possible.
+
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <div
+                class="reveal-right">
+
+
+                <div
+                    class="rounded-[28px]
+                           border border-black/10
+                           bg-white
+                           p-6
+                           shadow-soft
+                           sm:p-9
+                           lg:p-10">
+
+
+                    <div>
+
+
+                        <span
+                            class="text-[10px]
+                                   font-bold
+                                   uppercase
+                                   tracking-[.2em]
+                                   text-[#A07443]">
+
+                            Send an enquiry
+
+                        </span>
+
+
+                        <h2
+                            class="mt-3
+                                   font-serif
+                                   text-3xl
+                                   font-semibold
+                                   sm:text-4xl">
+
+                            Tell us about
+                            your project.
+
+                        </h2>
+
+
+                        <p
+                            class="mt-3
+                                   text-sm
+                                   leading-7
+                                   text-black/45">
+
+                            Fill in the details below and
+                            we'll receive your message
+                            directly.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <!-- FORM -->
+
+                    <form
+                        id="contactForm"
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                        class="mt-8 space-y-5">
+
+
+                        <!-- WEB3FORMS KEY -->
+
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="7d4d250a-5daa-4819-9005-3b24bc211c16"
+                        >
+
+
+                        <!-- SUBJECT -->
+
+                        <input
+                            type="hidden"
+                            name="subject"
+                            value="New Website Enquiry - Hanu Digital Hub"
+                        >
+
+
+                        <!-- FROM NAME -->
+
+                        <input
+                            type="hidden"
+                            name="from_name"
+                            value="Hanu Digital Hub Website"
+                        >
+
+
+                        <!-- REDIRECT -->
+
+                        <input
+                            type="hidden"
+                            name="redirect"
+                            value="https://hanu-digitalhub.vercel.app/contact.html?success=true"
+                        >
+
+
+                        <!-- BOT CHECK -->
+
+                        <input
+                            type="checkbox"
+                            name="botcheck"
+                            style="display:none;"
+                            tabindex="-1"
+                            autocomplete="off"
+                        >
+
+
+
+                        <!-- NAME + EMAIL -->
+
+                        <div
+                            class="grid gap-5 sm:grid-cols-2">
+
+
+                            <!-- NAME -->
+
+                            <div>
+
+
+                                <label
+                                    for="name"
+                                    class="mb-2 block
+                                           text-xs
+                                           font-bold
+                                           text-black/70">
+
+                                    Your Name
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="form-input"
+                                    placeholder="Enter your name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+
+                            </div>
+
+
+
+                            <!-- EMAIL -->
+
+                            <div>
+
+
+                                <label
+                                    for="email"
+                                    class="mb-2 block
+                                           text-xs
+                                           font-bold
+                                           text-black/70">
+
+                                    Email Address
+
+                                </label>
+
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-input"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div>
+
+
+                            <label
+                                for="phone"
+                                class="mb-2 block
+                                       text-xs
+                                       font-bold
+                                       text-black/70">
+
+                                Phone / WhatsApp
+                                <span class="font-normal text-black/35">
+                                    (Optional)
+                                </span>
+
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-input"
+                                placeholder="Enter your phone number"
+                                autocomplete="tel"
+                            >
+
+
+                        </div>
+
+
+
+                        <!-- SERVICE -->
+
+                        <div>
+
+
+                            <label
+                                for="service"
+                                class="mb-2 block
+                                       text-xs
+                                       font-bold
+                                       text-black/70">
+
+                                What do you need?
+
+                            </label>
+
+
+                            <select
+                                id="service"
+                                name="service"
+                                class="form-input
+                                       cursor-pointer"
+                                required
+                            >
+
+
+                                <option
+                                    value=""
+                                    selected
+                                    disabled>
+
+                                    Select a service
+
+                                </option>
+
+
+                                <option value="Website Design">
+
+                                    Website Design
+
+                                </option>
+
+
+                                <option value="Brand Identity">
+
+                                    Brand Identity
+
+                                </option>
+
+
+                                <option value="Logo Design">
+
+                                    Logo Design
+
+                                </option>
+
+
+                                <option value="Poster Design">
+
+                                    Poster Design
+
+                                </option>
+
+
+                                <option value="Social Media Design">
+
+                                    Social Media Design
+
+                                </option>
+
+
+                                <option value="Other">
+
+                                    Other / Custom Project
+
+                                </option>
+
+
+                            </select>
+
+
+                        </div>
+
+
+
+                        <!-- BUDGET -->
+
+                        <div>
+
+
+                            <label
+                                for="budget"
+                                class="mb-2 block
+                                       text-xs
+                                       font-bold
+                                       text-black/70">
+
+                                Approximate Budget
+                                <span class="font-normal text-black/35">
+                                    (Optional)
+                                </span>
+
+                            </label>
+
+
+                            <select
+                                id="budget"
+                                name="budget"
+                                class="form-input
+                                       cursor-pointer"
+                            >
+
+
+                                <option value="">
+                                    Select budget range
+                                </option>
+
+
+                                <option value="Under ₹5,000">
+                                    Under ₹5,000
+                                </option>
+
+
+                                <option value="₹5,000 - ₹15,000">
+                                    ₹5,000 - ₹15,000
+                                </option>
+
+
+                                <option value="₹15,000 - ₹30,000">
+                                    ₹15,000 - ₹30,000
+                                </option>
+
+
+                                <option value="₹30,000+">
+                                    ₹30,000+
+                                </option>
+
+
+                                <option value="Not decided">
+                                    Not decided yet
+                                </option>
+
+
+                            </select>
+
+
+                        </div>
+
+
+
+                        <!-- MESSAGE -->
+
+                        <div>
+
+
+                            <label
+                                for="message"
+                                class="mb-2 block
+                                       text-xs
+                                       font-bold
+                                       text-black/70">
+
+                                Tell us about your project
+
+                            </label>
+
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                class="form-input resize-none"
+                                placeholder="Tell us about your business, project, requirements or idea..."
+                                required
+                            ></textarea>
+
+
+                        </div>
+
+
+
+                        <!-- SUBMIT -->
+
+                        <button
+                            id="submitButton"
+                            type="submit"
+                            class="magnetic-button
+                                   inline-flex
+                                   w-full
+                                   items-center
+                                   justify-center
+                                   gap-3
+                                   rounded-full
+                                   bg-[#11110F]
+                                   px-7 py-4
+                                   text-sm
+                                   font-bold
+                                   text-white">
+
+
+                            <span id="buttonText">
+                                Send Message
+                            </span>
+
+
+                            <i
+                                id="buttonIcon"
+                                class="fa-solid
+                                       fa-paper-plane
+                                       text-xs">
+                            </i>
+
+
+                        </button>
+
+
+
+                        <!-- SECURITY -->
+
+                        <p
+                            class="flex
+                                   items-center
+                                   justify-center
+                                   gap-2
+                                   text-center
+                                   text-[11px]
+                                   text-black/35">
+
+
+                            <i
+                                class="fa-solid
+                                       fa-lock">
+                            </i>
+
+
+                            Your message is sent securely.
+
+
+                        </p>
+
+
+
+                        <!-- SUCCESS -->
+
+                        <div
+                            id="successMessage"
+                            class="rounded-2xl
+                                   border
+                                   border-green-200
+                                   bg-green-50
+                                   p-4
+                                   text-center
+                                   text-sm
+                                   text-green-800">
+
+
+                            <i
+                                class="fa-solid
+                                       fa-circle-check
+                                       mr-2">
+                            </i>
+
+
+                            Thank you! Your message has
+                            been sent successfully.
+
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
 
     </div>
 
 </section>
+
+
+
+<!-- =====================================================
+     INSTAGRAM CTA
+====================================================== -->
+
+<section
+    class="pb-20
+           sm:pb-28
+           lg:pb-32">
+
+
+    <div
+        class="reveal mx-auto
+               max-w-6xl
+               px-5
+               sm:px-6
+               lg:px-8">
+
+
+        <div
+            class="relative
+                   overflow-hidden
+                   rounded-[28px]
+                   bg-[#EAE2D7]
+                   px-6 py-14
+                   text-center
+                   sm:px-12
+                   sm:py-20">
+
+
+            <!-- DECORATION -->
+
+            <div
+                class="pointer-events-none
+                       absolute -right-20
+                       -top-20
+                       h-60 w-60
+                       rounded-full
+                       bg-[#D8BD96]/50
+                       blur-3xl">
+            </div>
+
+
+            <div
+                class="pointer-events-none
+                       absolute -bottom-24
+                       -left-20
+                       h-60 w-60
+                       rounded-full
+                       bg-white/70
+                       blur-3xl">
+            </div>
+
+
+
+            <div class="relative z-10">
+
+
+                <div
+                    class="mx-auto grid
+                           h-14 w-14
+                           place-items-center
+                           rounded-2xl
+                           bg-[#11110F]
+                           text-xl
+                           text-[#D8BD96]">
+
+
+                    <i
+                        class="fa-brands fa-instagram">
+                    </i>
+
+
+                </div>
+
+
+                <span
+                    class="mt-6 block
+                           text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#9A703F]">
+
+                    Prefer Instagram?
+
+                </span>
+
+
+                <h2
+                    class="mt-3
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           sm:text-5xl">
+
+
+                    Just send us a
+
+                    <em class="text-[#B78A52]">
+                        DM.
+                    </em>
+
+
+                </h2>
+
+
+                <p
+                    class="mx-auto mt-4
+                           max-w-lg
+                           text-sm
+                           leading-7
+                           text-black/45">
+
+
+                    If Instagram is easier for you,
+                    send us a direct message and
+                    tell us what you're looking for.
+
+
+                </p>
+
+
+                <a
+                    href="https://www.instagram.com/HANU_DIGITALHUB/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="magnetic-button
+                           mt-7
+                           inline-flex
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-[#11110F]
+                           px-7 py-4
+                           text-sm
+                           font-bold
+                           text-white">
+
+
+                    <i
+                        class="fa-brands fa-instagram">
+                    </i>
+
+
+                    DM on Instagram
+
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+</main>
 
 
 
 <!-- =====================================================
      FOOTER
-===================================================== -->
+====================================================== -->
 
-<footer class="footer">
+<footer
+    class="bg-[#11110F]
+           text-white">
 
-    <div class="container footer-container">
+
+    <div
+        class="mx-auto
+               grid max-w-7xl
+               gap-10
+               px-5 py-14
+               sm:px-6
+               md:grid-cols-3
+               lg:px-8">
 
 
-        <!-- BRAND -->
+        <!-- =================================================
+             FOOTER BRAND
+        ================================================== -->
 
-        <div class="footer-brand">
+        <div>
 
-            <a href="index.html" class="footer-logo">
 
-                <div class="footer-logo-mark">
+            <a
+                href="index.html"
+                class="flex items-center gap-3">
 
-                    <img
-                        src="images/logo.jpg"
-                        alt="Hanu Digital Hub Logo"
-                    >
 
-                </div>
+                <img
+                    src="images/logo.jpg"
+                    alt="Hanu Digital Hub Logo"
+                    class="h-11 w-11
+                           rounded-xl
+                           object-cover">
+
 
                 <div>
 
-                    <strong>
+
+                    <strong
+                        class="block
+                               text-[11px]
+                               tracking-[.17em]">
+
                         HANU DIGITAL HUB
+
                     </strong>
 
-                    <span>
+
+                    <span
+                        class="mt-1 block
+                               text-xs
+                               text-white/35">
+
                         Creative Digital Studio
+
                     </span>
+
 
                 </div>
 
+
             </a>
 
-            <p>
+
+            <p
+                class="mt-5
+                       max-w-sm
+                       text-sm
+                       leading-7
+                       text-white/40">
+
+
                 Creative. Simple. Professional.
+
+
             </p>
 
+
         </div>
 
 
-        <!-- LINKS -->
 
-        <div class="footer-links">
+        <!-- =================================================
+             FOOTER LINKS
+        ================================================== -->
 
-            <h4>
+        <div>
+
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
                 Quick Links
+
             </h4>
 
-            <a href="index.html">
-                Home
-            </a>
 
-            <a href="about.html">
-                About
-            </a>
+            <div class="space-y-1">
 
-            <a href="services.html">
-                Services
-            </a>
 
-            <a href="contact.html">
-                Contact
-            </a>
+                <a
+                    href="index.html"
+                    class="block py-1.5
+                           text-sm
+                           text-white/45
+                           transition
+                           hover:text-white">
+
+                    Home
+
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="block py-1.5
+                           text-sm
+                           text-white/45
+                           transition
+                           hover:text-white">
+
+                    About
+
+                </a>
+
+
+                <a
+                    href="services.html"
+                    class="block py-1.5
+                           text-sm
+                           text-white/45
+                           transition
+                           hover:text-white">
+
+                    Services
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="block py-1.5
+                           text-sm
+                           text-white/45
+                           transition
+                           hover:text-white">
+
+                    Contact
+
+                </a>
+
+
+            </div>
 
         </div>
 
 
-        <!-- CONNECT -->
 
-        <div class="footer-connect">
+        <!-- =================================================
+             CONNECT
+        ================================================== -->
 
-            <h4>
+        <div>
+
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
                 Let's Connect
+
             </h4>
 
-            <a
-    href="https://www.instagram.com/HANU_DIGITALHUB/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
 
-                <i class="fa-brands fa-instagram"></i>
+            <div class="space-y-2">
 
-                Instagram DM
 
-            </a>
+                <a
+                    href="https://www.instagram.com/HANU_DIGITALHUB/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3
+                           py-1.5
+                           text-sm
+                           text-white/45
+                           transition
+                           hover:text-white">
 
-            <a
-                href="mailto:hanudigitalhubofficial@gmail.com"
-            >
 
-                <i class="fa-solid fa-envelope"></i>
+                    <i
+                        class="fa-brands fa-instagram">
+                    </i>
 
-                Email Us
 
-            </a>
+                    Instagram DM
+
+
+                </a>
+
+
+                <a
+                    href="mailto:hanudigitalhubofficial@gmail.com"
+                    class="flex items-center gap-3
+                           py-1.5
+                           text-sm
+                           text-white/45
+                           transition
+                           hover:text-white">
+
+
+                    <i
+                        class="fa-solid fa-envelope">
+                    </i>
+
+
+                    Email Us
+
+
+                </a>
+
+
+            </div>
 
         </div>
+
 
     </div>
 
 
-    <!-- COPYRIGHT -->
 
-    <div class="footer-bottom">
+    <!-- =================================================
+         COPYRIGHT
+    ================================================== -->
 
-        <div class="container footer-bottom-inner">
+    <div
+        class="border-t
+               border-white/10">
+
+
+        <div
+            class="mx-auto flex
+                   max-w-7xl
+                   flex-col gap-2
+                   px-5 py-5
+                   text-xs
+                   text-white/30
+                   sm:flex-row
+                   sm:items-center
+                   sm:justify-between
+                   sm:px-6
+                   lg:px-8">
+
 
             <p>
-                © 2026 Hanu Digital Hub
+
+                ©
+                <span id="year">
+                    2026
+                </span>
+                Hanu Digital Hub
+
             </p>
 
+
             <span>
+
                 All rights reserved.
+
             </span>
 
+
         </div>
+
 
     </div>
 
 </footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+    /* =================================================
+       PRELOADER
+    ================================================== */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            const preloader =
+                document.getElementById(
+                    "preloader"
+                );
+
+
+            setTimeout(
+                function () {
+
+                    preloader.classList.add(
+                        "hide"
+                    );
+
+                },
+                350
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       MOBILE MENU
+    ================================================== */
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+
+    const mobileMenu =
+        document.getElementById(
+            "mobileMenu"
+        );
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            const isOpen =
+                mobileMenu.classList.toggle(
+                    "open"
+                );
+
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+
+            const lines =
+                menuButton.querySelectorAll(
+                    ".menu-line"
+                );
+
+
+            if (isOpen) {
+
+                lines[0].style.transform =
+                    "translateY(8px) rotate(45deg)";
+
+                lines[1].style.opacity =
+                    "0";
+
+                lines[2].style.transform =
+                    "translateY(-8px) rotate(-45deg)";
+
+            } else {
+
+                lines[0].style.transform =
+                    "";
+
+                lines[1].style.opacity =
+                    "";
+
+                lines[2].style.transform =
+                    "";
+
+            }
+
+        }
+    );
+
+
+
+    /* =================================================
+       CLOSE MOBILE MENU
+    ================================================== */
+
+    document
+        .querySelectorAll(".mobile-link")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        mobileMenu.classList.remove(
+                            "open"
+                        );
+
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+
+                        const lines =
+                            menuButton.querySelectorAll(
+                                ".menu-line"
+                            );
+
+
+                        lines[0].style.transform =
+                            "";
+
+                        lines[1].style.opacity =
+                            "";
+
+                        lines[2].style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       SCROLL HEADER
+    ================================================== */
+
+    const siteHeader =
+        document.getElementById(
+            "siteHeader"
+        );
+
+
+    window.addEventListener(
+        "scroll",
+        function () {
+
+            if (window.scrollY > 30) {
+
+                siteHeader.classList.add(
+                    "scrolled"
+                );
+
+            } else {
+
+                siteHeader.classList.remove(
+                    "scrolled"
+                );
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =================================================
+       SCROLL REVEAL
+    ================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.10
+            }
+
+        );
+
+
+    revealElements.forEach(
+        function (element) {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       YEAR
+    ================================================== */
+
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
+
+
+
+    /* =================================================
+       FORM SUBMIT LOADING
+    ================================================== */
+
+    const contactForm =
+        document.getElementById(
+            "contactForm"
+        );
+
+
+    const submitButton =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    const buttonText =
+        document.getElementById(
+            "buttonText"
+        );
+
+
+    const buttonIcon =
+        document.getElementById(
+            "buttonIcon"
+        );
+
+
+    contactForm.addEventListener(
+        "submit",
+        function () {
+
+            submitButton.disabled =
+                true;
+
+
+            submitButton.style.opacity =
+                ".7";
+
+
+            buttonText.textContent =
+                "Sending...";
+
+
+            buttonIcon.className =
+                "fa-solid fa-spinner fa-spin text-xs";
+
+        }
+    );
+
+
+
+    /* =================================================
+       SUCCESS URL MESSAGE
+    ================================================== */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    if (
+        params.get("success") ===
+        "true"
+    ) {
+
+        const successMessage =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        successMessage.classList.add(
+            "show"
+        );
+
+
+        document
+            .getElementById("contact-form")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+
+        /* Remove query string */
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
+    }
+
+
+
+    /* =================================================
+       ESCAPE CLOSE MENU
+    ================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                mobileMenu.classList.remove(
+                    "open"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+
+</script>
 
 
 </body>

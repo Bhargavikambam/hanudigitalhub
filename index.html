@@ -2,36 +2,581 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Hanu Digital Hub - Creative digital design studio offering logo, poster, social media and website design.">
+          content="Hanu Digital Hub - Creative websites, branding, poster design and digital solutions.">
+
+    <meta name="author"
+          content="Hanu Digital Hub">
 
     <title>Hanu Digital Hub | Creative Digital Studio</title>
 
 
-    <!-- Google Fonts -->
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
-
-
-    <!-- Font Awesome -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+          rel="stylesheet">
 
 
-    <!-- Your CSS -->
+    <!-- =====================================================
+         TAILWIND CSS
+    ====================================================== -->
 
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    colors: {
+                        gold: "#B78A52",
+                        dark: "#11110F",
+                        cream: "#F7F5F0"
+                    },
+
+                    fontFamily: {
+
+                        sans: [
+                            "DM Sans",
+                            "sans-serif"
+                        ],
+
+                        serif: [
+                            "Playfair Display",
+                            "serif"
+                        ]
+
+                    },
+
+                    boxShadow: {
+
+                        soft:
+                            "0 20px 60px rgba(17,17,15,.08)",
+
+                        gold:
+                            "0 25px 80px rgba(183,138,82,.25)"
+
+                    }
+
+                }
+
+            }
+
+        };
+
+    </script>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- =====================================================
+         CUSTOM CSS
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           GLOBAL
+        ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background: #F7F5F0;
+            color: #11110F;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ::selection {
+            background: #D8BD96;
+            color: #11110F;
+        }
+
+
+        /* =================================================
+           PRELOADER
+        ================================================= */
+
+        #preloader {
+
+            position: fixed;
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #11110F;
+
+            transition:
+                opacity .6s ease,
+                visibility .6s ease;
+
+        }
+
+        #preloader.hide {
+
+            opacity: 0;
+            visibility: hidden;
+
+        }
+
+        .loader {
+
+            width: 45px;
+            height: 45px;
+
+            border: 3px solid
+                rgba(255,255,255,.15);
+
+            border-top-color:
+                #B78A52;
+
+            border-radius: 50%;
+
+            animation:
+                spin 1s linear infinite;
+
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =================================================
+           SCROLL REVEAL
+        ================================================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal.show {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+        .reveal-left {
+
+            opacity: 0;
+
+            transform:
+                translateX(-40px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-left.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+        .reveal-right {
+
+            opacity: 0;
+
+            transform:
+                translateX(40px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+        .reveal-right.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        /* =================================================
+           FLOATING ANIMATION
+        ================================================= */
+
+        .floating {
+
+            animation:
+                floating 5s ease-in-out infinite;
+
+        }
+
+        .floating-delay {
+
+            animation:
+                floating 5.5s ease-in-out 1s infinite;
+
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-13px);
+            }
+
+        }
+
+
+        /* =================================================
+           HERO ORB
+        ================================================= */
+
+        .hero-orb {
+
+            animation:
+                orb 7s ease-in-out infinite;
+
+        }
+
+        @keyframes orb {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.05)
+                    rotate(7deg);
+
+            }
+
+        }
+
+
+        /* =================================================
+           MARQUEE
+        ================================================= */
+
+        .marquee-track {
+
+            animation:
+                marquee 28s linear infinite;
+
+        }
+
+        @keyframes marquee {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+
+        }
+
+
+        /* =================================================
+           CARDS
+        ================================================= */
+
+        .service-card {
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease,
+                border-color .35s ease;
+
+        }
+
+        .service-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(17,17,15,.10);
+
+            border-color:
+                rgba(183,138,82,.4);
+
+        }
+
+
+        /* =================================================
+           PROJECT IMAGE
+        ================================================= */
+
+        .project-image img {
+
+            transition:
+                transform .7s
+                cubic-bezier(.2,.7,.2,1);
+
+        }
+
+        .project-card:hover
+        .project-image img {
+
+            transform:
+                scale(1.06);
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .pro-button {
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+
+        }
+
+        .pro-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(17,17,15,.18);
+
+        }
+
+
+        /* =================================================
+           LINK UNDERLINE
+        ================================================= */
+
+        .line-link {
+
+            position: relative;
+
+        }
+
+        .line-link::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -5px;
+
+            width: 0;
+            height: 1px;
+
+            background:
+                #B78A52;
+
+            transition:
+                width .3s ease;
+
+        }
+
+        .line-link:hover::after {
+            width: 100%;
+        }
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        .mobile-menu {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            transition:
+                max-height .35s ease,
+                opacity .35s ease;
+
+        }
+
+        .mobile-menu.open {
+
+            max-height: 600px;
+
+            opacity: 1;
+
+        }
+
+
+        /* =================================================
+           MOBILE OPTIMIZATION
+        ================================================= */
+
+        @media (max-width: 767px) {
+
+            .hero-title {
+
+                font-size:
+                    clamp(
+                        3rem,
+                        15vw,
+                        4.2rem
+                    ) !important;
+
+                line-height:
+                    .96 !important;
+
+                letter-spacing:
+                    -.055em !important;
+
+            }
+
+            section {
+
+                max-width: 100%;
+                overflow: hidden;
+
+            }
+
+            .service-card:hover {
+
+                transform:
+                    translateY(-3px);
+
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL PHONES
+        ================================================= */
+
+        @media (max-width: 380px) {
+
+            .hero-title {
+
+                font-size:
+                    2.75rem !important;
+
+            }
+
+            .hero-orb {
+
+                width:
+                    220px !important;
+
+                height:
+                    220px !important;
+
+            }
+
+        }
+
+
+        /* =================================================
+           TOUCH DEVICES
+        ================================================= */
+
+        @media (hover: none) {
+
+            .service-card:hover {
+
+                transform: none;
+                box-shadow: none;
+
+            }
+
+            .project-card:hover
+            .project-image img {
+
+                transform: none;
+
+            }
+
+            .pro-button:hover {
+
+                transform: none;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -39,883 +584,2605 @@
 <body>
 
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
-    <header class="header">
+<!-- =====================================================
+     PRELOADER
+====================================================== -->
 
-        <div class="container nav">
+<div id="preloader">
 
-            <!-- Brand -->
-            <a href="index.html" class="brand">
+    <div class="loader"></div>
 
-                <div class="brand-mark">
-                    <img src="images/logo.jpg" alt="Hanu Digital Hub Logo">
-                </div>
-
-                <div class="brand-text">
-
-                    <strong>
-                        HANU DIGITAL HUB
-                    </strong>
-
-                    <span>
-                        Creative Digital Studio
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- Mobile Menu Button -->
-
-            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-
-            <label for="menu-toggle" class="menu-button" aria-label="Open menu">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </label>
-
-
-            <!-- Navigation -->
-
-            <nav class="nav-menu">
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="services.html">
-                    Services
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </nav>
-
-
-            <!-- Desktop CTA -->
-
-            <a href="contact.html" class="nav-contact">
-                Let's Talk
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </header>
+</div>
 
 
 
-    <!-- =========================
-         HOME
-    ========================== -->
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
-    <section id="home" class="hero">
+<header
+    class="fixed top-0 left-0 right-0 z-50
+           border-b border-black/5
+           bg-[#F7F5F0]/90
+           backdrop-blur-xl">
 
-        <div class="container hero-container">
-
-
-            <div class="hero-content">
-                <div class="eyebrow">
-                    WEBSITE DESIGN & DIGITAL SOLUTIONS
-                </div>
-
-
-                <h1>
-
-                    We Design Websites
-                    <span>That Stand Out.</span>
-
-                </h1>
+    <div
+        class="mx-auto flex h-[68px]
+               max-w-7xl items-center
+               justify-between
+               px-4 sm:h-20 sm:px-6 lg:px-8">
 
 
-                <p>
+        <!-- =================================================
+             LOGO + BRAND NAME
+        ================================================== -->
 
-                    Modern, responsive and professional websites
-                    for businesses, creators and growing brands.
-
-                    We turn your ideas into a digital presence
-                    that looks great and works for your business.
-
-                </p>
-
-
-                <div class="hero-buttons">
-
-                    <a href="#portfolio" class="btn btn-primary">
-                        View Our Work
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+        <a
+            href="index.html"
+            class="group flex min-w-0
+                   items-center gap-2.5">
 
 
-                    <a href="https://www.instagram.com/hanudigitalhub/" target="_blank" class="btn btn-outline">
+            <!-- LOGO -->
 
-                        <i class="fa-brands fa-instagram"></i>
+            <div class="shrink-0">
 
-                        Instagram
-
-                    </a>
-
-                </div>
-
-
-                <!-- Small trust line -->
-
-                <div class="hero-note">
-
-                    <i class="fa-solid fa-sparkles"></i>
-
-                    <span>
-                        Creative. Simple. Professional.
-                    </span>
-
-                </div>
-
+                <img
+                    src="images/logo.jpg"
+                    alt="Hanu Digital Hub Logo"
+                    class="h-10 w-10
+                           rounded-xl
+                           object-cover
+                           ring-1 ring-black/10
+                           transition duration-300
+                           group-hover:scale-105
+                           sm:h-11 sm:w-11">
 
             </div>
 
 
-            <!-- Hero Visual -->
+            <!-- BRAND -->
 
-            <div class="hero-visual">
+            <div
+                class="min-w-0 leading-none">
 
-                <div class="hero-card card-one">
 
-                    <i class="fa-solid fa-pen-nib"></i>
+                <!-- BRAND NAME -->
 
-                    <span>
-                        Creative Design
+                <div
+                    class="whitespace-nowrap
+                           text-[12px]
+                           font-extrabold
+                           tracking-[.10em]
+                           sm:text-[15px]
+                           sm:tracking-[.14em]">
+
+                    <span
+                        class="text-[#11110F]">
+
+                        HANU
+
+                    </span>
+
+                    <span
+                        class="text-[#B78A52]">
+
+                        DIGITAL HUB
+
                     </span>
 
                 </div>
 
 
-                <div class="hero-card card-two">
+                <!-- TAGLINE -->
 
-                    <i class="fa-solid fa-palette"></i>
+                <div
+                    class="mt-1.5 flex
+                           items-center gap-1.5">
 
-                    <span>
-                        Brand Identity
+                    <span
+                        class="h-px w-4
+                               bg-[#B78A52]">
+
+                    </span>
+
+                    <span
+                        class="whitespace-nowrap
+                               text-[7px]
+                               font-semibold
+                               uppercase
+                               tracking-[.18em]
+                               text-black/45
+                               sm:text-[8px]">
+
+                        Creative Digital Studio
+
                     </span>
 
                 </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- =================================================
+             DESKTOP NAVIGATION
+        ================================================== -->
+
+        <nav
+            class="hidden items-center
+                   gap-8 md:flex">
+
+
+            <a
+                href="index.html"
+                class="text-sm font-semibold
+                       text-black/60
+                       transition
+                       hover:text-[#B78A52]">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="text-sm font-semibold
+                       text-black/60
+                       transition
+                       hover:text-[#B78A52]">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="text-sm font-semibold
+                       text-black/60
+                       transition
+                       hover:text-[#B78A52]">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="text-sm font-semibold
+                       text-black/60
+                       transition
+                       hover:text-[#B78A52]">
+
+                Contact
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             DESKTOP CTA
+        ================================================== -->
+
+        <a
+            href="contact.html"
+            class="pro-button hidden
+                   items-center gap-2
+                   rounded-full
+                   bg-[#11110F]
+                   px-5 py-3
+                   text-sm font-bold
+                   text-white
+                   md:inline-flex">
+
+            Let's Talk
+
+            <i
+                class="fa-solid fa-arrow-right
+                       text-xs">
+
+            </i>
+
+        </a>
+
+
+
+        <!-- =================================================
+             MOBILE MENU BUTTON
+        ================================================== -->
+
+        <button
+            id="menuButton"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            class="grid h-10 w-10
+                   shrink-0
+                   place-items-center
+                   rounded-xl
+                   border border-black/10
+                   bg-white
+                   md:hidden">
+
+
+            <div class="space-y-1.5">
+
+                <span
+                    class="block h-0.5
+                           w-5 bg-[#11110F]">
+
+                </span>
+
+                <span
+                    class="block h-0.5
+                           w-5 bg-[#11110F]">
+
+                </span>
+
+                <span
+                    class="block h-0.5
+                           w-5 bg-[#11110F]">
+
+                </span>
+
+            </div>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MOBILE NAVIGATION
+    ================================================== -->
+
+    <div
+        id="mobileMenu"
+        class="mobile-menu
+               mx-3 mb-3
+               rounded-2xl
+               border border-black/10
+               bg-white
+               shadow-soft
+               md:hidden">
+
+
+        <nav class="p-3">
+
+
+            <a
+                href="index.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       transition
+                       hover:bg-black/5">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       transition
+                       hover:bg-black/5">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       transition
+                       hover:bg-black/5">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mobile-link
+                       block rounded-xl
+                       px-4 py-3.5
+                       font-semibold
+                       transition
+                       hover:bg-black/5">
+
+                Contact
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="mt-2 block
+                       rounded-xl
+                       bg-[#11110F]
+                       px-4 py-3.5
+                       text-center
+                       font-bold
+                       text-white">
+
+                Start Your Project
+
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+
+
+<!-- =====================================================
+     HERO
+====================================================== -->
+
+<section
+    class="relative overflow-hidden
+           pb-20 pt-32
+           sm:pb-24 sm:pt-40
+           lg:pb-32">
+
+
+    <!-- BACKGROUND -->
+
+    <div
+        class="pointer-events-none
+               absolute -right-32 top-24
+               h-72 w-72
+               rounded-full
+               bg-[#D8BD96]/20
+               blur-3xl">
+
+    </div>
+
+
+    <div
+        class="pointer-events-none
+               absolute -left-32 bottom-0
+               h-72 w-72
+               rounded-full
+               bg-[#E7DDD0]/70
+               blur-3xl">
+
+    </div>
+
+
+
+    <div
+        class="mx-auto grid
+               max-w-7xl
+               items-center gap-12
+               px-5 sm:px-6
+               lg:grid-cols-[1.08fr_.92fr]
+               lg:gap-14
+               lg:px-8">
+
+
+        <!-- =================================================
+             HERO CONTENT
+        ================================================== -->
+
+        <div class="reveal">
+
+
+            <!-- LABEL -->
+
+            <div
+                class="mb-6 inline-flex
+                       max-w-full
+                       flex-wrap
+                       items-center gap-2
+                       rounded-full
+                       border border-black/10
+                       bg-white/70
+                       px-3 py-2
+                       text-[8px]
+                       font-bold
+                       tracking-[.15em]
+                       text-[#9A703F]
+                       sm:px-4
+                       sm:text-[10px]">
+
+                <span
+                    class="h-1.5 w-1.5
+                           rounded-full
+                           bg-[#B78A52]">
+
+                </span>
+
+                WEBSITES
+
+                <span>•</span>
+
+                BRANDING
+
+                <span>•</span>
+
+                DIGITAL DESIGN
+
+            </div>
+
+
+
+            <!-- HERO TITLE -->
+
+            <h1
+                class="hero-title
+                       font-serif
+                       text-5xl
+                       font-semibold
+                       leading-[.98]
+                       tracking-[-.045em]
+                       sm:text-7xl
+                       lg:text-[6.2rem]">
+
+                We Build
 
                 <br>
-                <div class="hero-main-circle">
 
-                    <div>
+                Digital
 
-                        <span>
-                            HANU
-                        </span>
+                <br>
 
-                        <strong>
-                            DIGITAL HUB
-                        </strong>
+                <em
+                    class="text-[#B78A52]">
 
-                    </div>
+                    Experiences.
 
-                </div>
+                </em>
 
-            </div>
-
-
-        </div>
-
-    </section>
+            </h1>
 
 
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+            <!-- DESCRIPTION -->
 
-    <section id="about" class="section about">
+            <p
+                class="mt-6 max-w-xl
+                       text-[15px]
+                       leading-7
+                       text-black/55
+                       sm:mt-7
+                       sm:text-lg
+                       sm:leading-8">
 
-        <div class="container about-container">
+                Modern websites, memorable branding
+                and creative digital designs for
+                businesses, creators and growing brands.
 
-
-            <div class="about-content">
-
-                <span class="section-label">
-                    ABOUT HANU DIGITAL HUB
-                </span>
-
-
-                <h2>
-                    Turning Simple Ideas Into
-                    <span>Beautiful Designs.</span>
-                </h2>
+            </p>
 
 
-                <p>
-                    Hanu Digital Hub is a creative digital studio
-                    focused on helping small businesses, brands
-                    and individuals create a strong visual identity.
-                </p>
+
+            <!-- BUTTONS -->
+
+            <div
+                class="mt-7 flex
+                       w-full flex-col
+                       gap-3
+                       sm:w-auto
+                       sm:flex-row">
 
 
-                <p>
-                    From logos and posters to social media designs
-                    and websites, we create clean and meaningful
-                    designs that help your brand stand out.
-                </p>
+                <a
+                    href="contact.html"
+                    class="pro-button
+                           inline-flex
+                           w-full
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-[#11110F]
+                           px-6 py-4
+                           text-sm
+                           font-bold
+                           text-white
+                           sm:w-auto">
+
+                    Start Your Project
+
+                    <i
+                        class="fa-solid
+                               fa-arrow-right
+                               text-xs">
+
+                    </i>
+
+                </a>
 
 
-                <a href="#services" class="text-link">
+                <a
+                    href="#work"
+                    class="pro-button
+                           inline-flex
+                           w-full
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           border border-black/10
+                           bg-white
+                           px-6 py-4
+                           text-sm
+                           font-bold
+                           sm:w-auto">
 
-                    Explore Our Services
+                    View Our Work
 
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i
+                        class="fa-solid
+                               fa-arrow-down
+                               text-xs">
+
+                    </i>
 
                 </a>
 
             </div>
 
 
-        </div>
 
-    </section>
+            <!-- TRUST -->
 
-
-
-    <!-- =========================
-         SERVICES
-    ========================== -->
-
-    <section id="services" class="section services">
-
-        <div class="container">
+            <div
+                class="mt-6 flex
+                       flex-wrap
+                       gap-x-5 gap-y-2
+                       text-[11px]
+                       font-semibold
+                       text-black/45">
 
 
-            <div class="section-heading centered">
+                <span>
 
-                <span class="section-label">
-                    WHAT WE DO
+                    <i
+                        class="fa-solid
+                               fa-check
+                               mr-1
+                               text-[#B78A52]">
+
+                    </i>
+
+                    Creative Design
+
                 </span>
 
-                <h2>
-                    Creative Services For
-                    <span>Your Brand.</span>
-                </h2>
 
-                <p>
-                    Simple, professional and creative solutions
-                    for your digital presence.
+                <span>
+
+                    <i
+                        class="fa-solid
+                               fa-check
+                               mr-1
+                               text-[#B78A52]">
+
+                    </i>
+
+                    Custom Solutions
+
+                </span>
+
+
+                <span>
+
+                    <i
+                        class="fa-solid
+                               fa-check
+                               mr-1
+                               text-[#B78A52]">
+
+                    </i>
+
+                    Professional Delivery
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HERO VISUAL
+        ================================================== -->
+
+        <div
+            class="reveal-right
+                   relative mt-3
+                   flex min-h-[330px]
+                   items-center
+                   justify-center
+                   sm:min-h-[410px]
+                   lg:mt-0">
+
+
+            <!-- MAIN ORB -->
+
+            <div
+                class="hero-orb
+                       absolute
+                       h-64 w-64
+                       rounded-full
+                       bg-gradient-to-br
+                       from-[#F6EEE3]
+                       via-[#D8BD96]
+                       to-[#956C3F]
+                       shadow-gold
+                       sm:h-96 sm:w-96">
+
+            </div>
+
+
+            <!-- RING -->
+
+            <div
+                class="absolute
+                       h-48 w-48
+                       rounded-full
+                       border
+                       border-white/40
+                       sm:h-72 sm:w-72">
+
+            </div>
+
+
+            <!-- CENTER BRAND -->
+
+            <div
+                class="relative z-10
+                       text-center
+                       text-white">
+
+                <div
+                    class="font-serif
+                           text-4xl
+                           font-bold
+                           tracking-[.12em]
+                           sm:text-6xl">
+
+                    HANU
+
+                </div>
+
+
+                <div
+                    class="mt-2
+                           text-[8px]
+                           font-bold
+                           tracking-[.4em]
+                           text-white/75
+                           sm:text-[10px]">
+
+                    DIGITAL HUB
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FLOAT CARD -->
+
+            <div
+                class="floating
+                       absolute left-0
+                       top-3
+                       rounded-2xl
+                       border border-black/5
+                       bg-white
+                       px-3 py-2.5
+                       text-[10px]
+                       font-bold
+                       shadow-2xl
+                       sm:left-2
+                       sm:px-4 sm:py-3
+                       sm:text-xs">
+
+                <i
+                    class="fa-solid
+                           fa-pen-nib
+                           mr-1
+                           text-[#B78A52]">
+
+                </i>
+
+                Creative Design
+
+            </div>
+
+
+
+            <!-- FLOAT CARD -->
+
+            <div
+                class="floating-delay
+                       absolute bottom-3
+                       right-0
+                       rounded-2xl
+                       border border-black/5
+                       bg-white
+                       px-3 py-2.5
+                       text-[10px]
+                       font-bold
+                       shadow-2xl
+                       sm:right-2
+                       sm:px-4 sm:py-3
+                       sm:text-xs">
+
+                <i
+                    class="fa-solid
+                           fa-globe
+                           mr-1
+                           text-[#B78A52]">
+
+                </i>
+
+                Digital Experience
+
+            </div>
+
+
+
+            <!-- SPARKLE -->
+
+            <div
+                class="floating
+                       absolute right-3
+                       top-0
+                       grid h-10 w-10
+                       place-items-center
+                       rounded-full
+                       bg-[#11110F]
+                       text-white
+                       shadow-xl
+                       sm:right-8
+                       sm:h-12 sm:w-12">
+
+                <i
+                    class="fa-solid
+                           fa-sparkles
+                           text-xs sm:text-sm">
+
+                </i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARQUEE
+====================================================== -->
+
+<section
+    class="overflow-hidden
+           border-y border-black/5
+           bg-white py-4 sm:py-5">
+
+
+    <div
+        class="marquee-track
+               flex w-max
+               items-center gap-7
+               whitespace-nowrap
+               text-[9px]
+               font-bold
+               tracking-[.2em]
+               text-black/35
+               sm:gap-10
+               sm:text-[10px]">
+
+
+        <span>CREATIVE DESIGN</span>
+        <span>•</span>
+
+        <span>BRAND IDENTITY</span>
+        <span>•</span>
+
+        <span>WEB DEVELOPMENT</span>
+        <span>•</span>
+
+        <span>SOCIAL MEDIA</span>
+        <span>•</span>
+
+        <span>POSTER DESIGN</span>
+        <span>•</span>
+
+        <span>CREATIVE DESIGN</span>
+        <span>•</span>
+
+        <span>BRAND IDENTITY</span>
+        <span>•</span>
+
+        <span>WEB DEVELOPMENT</span>
+        <span>•</span>
+
+        <span>SOCIAL MEDIA</span>
+        <span>•</span>
+
+        <span>POSTER DESIGN</span>
+        <span>•</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+====================================================== -->
+
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto grid
+               max-w-7xl
+               gap-10 px-5
+               sm:px-6
+               lg:grid-cols-[.8fr_1.2fr]
+               lg:gap-14
+               lg:px-8">
+
+
+        <!-- LEFT -->
+
+        <div
+            class="reveal-left">
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#A07443]">
+
+                About Hanu Digital Hub
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       leading-tight
+                       sm:text-5xl">
+
+                Turning simple ideas
+                into
+
+                <em
+                    class="text-[#B78A52]">
+
+                    beautiful designs.
+
+                </em>
+
+            </h2>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div
+            class="reveal-right">
+
+
+            <p
+                class="text-[15px]
+                       leading-7
+                       text-black/55
+                       sm:text-lg
+                       sm:leading-8">
+
+                Hanu Digital Hub is a creative digital
+                studio focused on helping businesses,
+                brands and individuals build a strong
+                visual identity and professional digital
+                presence.
+
+            </p>
+
+
+            <p
+                class="mt-4
+                       text-sm
+                       leading-7
+                       text-black/50
+                       sm:text-base">
+
+                From logos and posters to social media
+                creatives and websites, we create clean,
+                meaningful and modern designs around
+                your goals.
+
+            </p>
+
+
+            <a
+                href="about.html"
+                class="line-link
+                       mt-7
+                       inline-flex
+                       items-center
+                       gap-2
+                       text-sm
+                       font-bold">
+
+                Learn More
+
+                <i
+                    class="fa-solid
+                           fa-arrow-right
+                           text-[#B78A52]">
+
+                </i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+====================================================== -->
+
+<section
+    class="bg-[#11110F]
+           py-20 text-white
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5 sm:px-6
+               lg:px-8">
+
+
+        <!-- HEADING -->
+
+        <div
+            class="reveal
+                   text-center">
+
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                What We Do
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       sm:text-5xl">
+
+                Creative services for
+
+                <em
+                    class="text-[#D8BD96]">
+
+                    your brand.
+
+                </em>
+
+            </h2>
+
+
+            <p
+                class="mx-auto mt-4
+                       max-w-xl
+                       text-sm
+                       leading-7
+                       text-white/45">
+
+                Professional creative solutions
+                designed around your business goals.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- SERVICE GRID -->
+
+        <div
+            class="mt-10 grid
+                   gap-4
+                   md:grid-cols-3
+                   md:gap-5">
+
+
+            <!-- SERVICE 1 -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/[.04]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="grid h-12 w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#D8BD96]/10
+                           text-[#D8BD96]">
+
+                    <i
+                        class="fa-solid
+                               fa-pen-nib">
+
+                    </i>
+
+                </div>
+
+
+                <p
+                    class="mt-7
+                           text-[10px]
+                           text-white/25">
+
+                    01
+
+                </p>
+
+
+                <h3
+                    class="mt-1
+                           text-xl
+                           font-bold">
+
+                    Brand Identity
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/45">
+
+                    Build a recognizable brand with
+                    professional logos and visual
+                    identity systems.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- SERVICE 2 -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/[.04]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="grid h-12 w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#D8BD96]/10
+                           text-[#D8BD96]">
+
+                    <i
+                        class="fa-solid
+                               fa-image">
+
+                    </i>
+
+                </div>
+
+
+                <p
+                    class="mt-7
+                           text-[10px]
+                           text-white/25">
+
+                    02
+
+                </p>
+
+
+                <h3
+                    class="mt-1
+                           text-xl
+                           font-bold">
+
+                    Poster Design
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/45">
+
+                    Attractive promotional designs
+                    that communicate your message
+                    clearly.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- SERVICE 3 -->
+
+            <article
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-white/10
+                       bg-white/[.04]
+                       p-6
+                       sm:p-7">
+
+
+                <div
+                    class="grid h-12 w-12
+                           place-items-center
+                           rounded-2xl
+                           bg-[#D8BD96]/10
+                           text-[#D8BD96]">
+
+                    <i
+                        class="fa-brands
+                               fa-instagram">
+
+                    </i>
+
+                </div>
+
+
+                <p
+                    class="mt-7
+                           text-[10px]
+                           text-white/25">
+
+                    03
+
+                </p>
+
+
+                <h3
+                    class="mt-1
+                           text-xl
+                           font-bold">
+
+                    Social Media Design
+
+                </h3>
+
+
+                <p
+                    class="mt-3
+                           text-sm
+                           leading-7
+                           text-white/45">
+
+                    Scroll-stopping social media
+                    creatives that make your brand
+                    consistent online.
+
+                </p>
+
+            </article>
+
+        </div>
+
+
+
+        <div
+            class="mt-9 text-center">
+
+            <a
+                href="services.html"
+                class="line-link
+                       inline-flex
+                       items-center
+                       gap-2
+                       text-sm
+                       font-bold
+                       text-[#D8BD96]">
+
+                View All Services
+
+                <i
+                    class="fa-solid
+                           fa-arrow-right">
+
+                </i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY CHOOSE US
+====================================================== -->
+
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto grid
+               max-w-7xl
+               gap-10 px-5
+               sm:px-6
+               lg:grid-cols-[.8fr_1.2fr]
+               lg:gap-14
+               lg:px-8">
+
+
+        <!-- LEFT -->
+
+        <div
+            class="reveal-left">
+
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#A07443]">
+
+                Why Hanu Digital Hub
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       leading-tight
+                       sm:text-5xl">
+
+                More than just
+
+                <em
+                    class="text-[#B78A52]">
+
+                    good looks.
+
+                </em>
+
+            </h2>
+
+
+            <p
+                class="mt-4
+                       max-w-md
+                       text-sm
+                       leading-7
+                       text-black/50
+                       sm:text-base">
+
+                Every project combines visual quality
+                with clarity, usability and purpose.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- RIGHT GRID -->
+
+        <div
+            class="grid
+                   gap-4
+                   sm:grid-cols-2">
+
+
+            <div
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white p-6">
+
+
+                <i
+                    class="fa-solid
+                           fa-lightbulb
+                           text-2xl
+                           text-[#B78A52]">
+
+                </i>
+
+
+                <h3
+                    class="mt-5
+                           text-lg
+                           font-bold">
+
+                    Creative Thinking
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Designs created around your
+                    brand instead of generic templates.
+
                 </p>
 
             </div>
 
 
-            <div class="services-grid">
+
+            <div
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white p-6">
 
 
-                <!-- Service 1 -->
+                <i
+                    class="fa-solid
+                           fa-mobile-screen-button
+                           text-2xl
+                           text-[#B78A52]">
 
-                <div class="service-card">
+                </i>
 
-                    <div class="service-icon">
 
-                        <i class="fa-solid fa-pen-nib"></i>
+                <h3
+                    class="mt-5
+                           text-lg
+                           font-bold">
 
-                    </div>
+                    Responsive Design
 
-                    <span class="service-number">
-                        01
-                    </span>
+                </h3>
 
-                    <h3>
-                        Logo Design
-                    </h3>
 
-                    <p>
-                        Unique and memorable logos
-                        designed for your brand.
-                    </p>
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Experiences designed for phones,
+                    tablets and desktops.
+
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white p-6">
+
+
+                <i
+                    class="fa-solid
+                           fa-bullseye
+                           text-2xl
+                           text-[#B78A52]">
+
+                </i>
+
+
+                <h3
+                    class="mt-5
+                           text-lg
+                           font-bold">
+
+                    Goal Focused
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Design decisions made to support
+                    your business goals.
+
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="service-card
+                       reveal
+                       rounded-3xl
+                       border border-black/10
+                       bg-white p-6">
+
+
+                <i
+                    class="fa-solid
+                           fa-layer-group
+                           text-2xl
+                           text-[#B78A52]">
+
+                </i>
+
+
+                <h3
+                    class="mt-5
+                           text-lg
+                           font-bold">
+
+                    End-to-End Service
+
+                </h3>
+
+
+                <p
+                    class="mt-2
+                           text-sm
+                           leading-7
+                           text-black/50">
+
+                    Branding, creative design and
+                    website solutions under one studio.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PORTFOLIO
+====================================================== -->
+
+<section
+    id="work"
+    class="bg-white
+           py-20
+           sm:py-24
+           lg:py-32">
+
+
+    <div
+        class="mx-auto
+               max-w-7xl
+               px-5 sm:px-6
+               lg:px-8">
+
+
+        <!-- HEADING -->
+
+        <div
+            class="reveal
+                   text-center">
+
+
+            <p
+                class="text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#A07443]">
+
+                Selected Work
+
+            </p>
+
+
+            <h2
+                class="mt-3
+                       font-serif
+                       text-4xl
+                       font-semibold
+                       sm:text-5xl">
+
+                Projects that
+
+                <em
+                    class="text-[#B78A52]">
+
+                    speak.
+
+                </em>
+
+            </h2>
+
+
+            <p
+                class="mx-auto mt-4
+                       max-w-xl
+                       text-sm
+                       leading-7
+                       text-black/45">
+
+                A selection of creative projects
+                created for brands and businesses.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- PROJECTS -->
+
+        <div
+            class="mt-10 grid
+                   gap-5
+                   md:grid-cols-2">
+
+
+            <!-- PROJECT 1 -->
+
+            <article
+                class="project-card
+                       service-card
+                       reveal
+                       overflow-hidden
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]">
+
+
+                <div
+                    class="project-image
+                           aspect-[16/11]
+                           overflow-hidden">
+
+                    <img
+                        src="images/logodesign.jpeg"
+                        alt="Logo design project"
+                        loading="lazy"
+                        class="h-full w-full
+                               object-cover">
 
                 </div>
 
 
-                <!-- Service 2 -->
+                <div class="p-5 sm:p-6">
 
-                <div class="service-card">
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.18em]
+                               text-[#A07443]">
 
-                    <div class="service-icon">
+                        Brand Identity
 
-                        <i class="fa-solid fa-image"></i>
+                    </p>
 
-                    </div>
 
-                    <span class="service-number">
-                        02
-                    </span>
+                    <h3
+                        class="mt-2
+                               text-lg
+                               font-bold
+                               sm:text-xl">
 
-                    <h3>
+                        Sram Organic Mushrooms
+
+                    </h3>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <article
+                class="project-card
+                       service-card
+                       reveal
+                       overflow-hidden
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]">
+
+
+                <div
+                    class="project-image
+                           aspect-[16/11]
+                           overflow-hidden">
+
+                    <img
+                        src="images/poster.png"
+                        alt="Poster design project"
+                        loading="lazy"
+                        class="h-full w-full
+                               object-cover">
+
+                </div>
+
+
+                <div class="p-5 sm:p-6">
+
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.18em]
+                               text-[#A07443]">
+
                         Poster Design
-                    </h3>
 
-                    <p>
-                        Attractive posters that
-                        communicate your message clearly.
                     </p>
 
-                </div>
 
+                    <h3
+                        class="mt-2
+                               text-lg
+                               font-bold
+                               sm:text-xl">
 
-                <!-- Service 3 -->
+                        Veera Restaurant
 
-                <div class="service-card">
-
-                    <div class="service-icon">
-
-                        <i class="fa-brands fa-instagram"></i>
-
-                    </div>
-
-                    <span class="service-number">
-                        03
-                    </span>
-
-                    <h3>
-                        Social Media Design
                     </h3>
 
-                    <p>
-                        Professional social media creatives
-                        that make your page stand out.
-                    </p>
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <article
+                class="project-card
+                       service-card
+                       reveal
+                       overflow-hidden
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]">
+
+
+                <div
+                    class="project-image
+                           aspect-[16/11]
+                           overflow-hidden">
+
+                    <img
+                        src="images/project2.png"
+                        alt="Nature Crunch website"
+                        loading="lazy"
+                        class="h-full w-full
+                               object-cover">
 
                 </div>
 
 
-                <!-- Service 4 -->
+                <div class="p-5 sm:p-6">
 
-                <div class="service-card">
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.18em]
+                               text-[#A07443]">
 
-                    <div class="service-icon">
+                        Website Development
 
-                        <i class="fa-solid fa-utensils"></i>
+                    </p>
 
-                    </div>
 
-                    <span class="service-number">
-                        04
-                    </span>
+                    <h3
+                        class="mt-2
+                               text-lg
+                               font-bold
+                               sm:text-xl">
 
-                    <h3>
-                        Menu Card Design
+                        Nature Crunch
+
                     </h3>
 
-                    <p>
-                        Clean and attractive menu designs
-                        for restaurants and businesses.
-                    </p>
 
-                </div>
+                    <a
+                        href="https://bhargavikambam.github.io/vnr-dried-fruits/#products"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="line-link
+                               mt-3
+                               inline-flex
+                               items-center
+                               gap-2
+                               text-sm
+                               font-bold">
 
-
-                <!-- Service 5 -->
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-
-                        <i class="fa-solid fa-globe"></i>
-
-                    </div>
-
-                    <span class="service-number">
-                        05
-                    </span>
-
-                    <h3>
-                        Website Design
-                    </h3>
-
-                    <p>
-                        Simple and modern websites
-                        designed for your business.
-                    </p>
-
-                </div>
-
-
-                <!-- Service 6 -->
-
-                <div class="service-card">
-
-                    <div class="service-icon">
-
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-
-                    </div>
-
-                    <span class="service-number">
-                        06
-                    </span>
-
-                    <h3>
-                        Custom Design
-                    </h3>
-
-                    <p>
-                        Have something different in mind?
-                        Let's create it together.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- =========================
-     SELECTED WORK
-========================== -->
-
-    <section id="portfolio" class="section portfolio">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="section-label">
-                    MY WORK
-                </span>
-
-                <h2>
-                    Selected
-                    <span>Projects.</span>
-                </h2>
-
-                <p>
-                    A few creative projects I've worked on
-                    for brands and businesses.
-                </p>
-
-            </div>
-
-
-            <div class="portfolio-grid">
-
-
-                <!-- PROJECT 1 - LOGO -->
-
-                <div class="portfolio-card">
-
-                    <div class="portfolio-image">
-
-                        <img src="images/logodesign.jpeg" alt="Sram Organic Mushrooms Logo Design">
-
-                    </div>
-
-                    <div class="portfolio-info">
-
-                        <div>
-
-                            <span>
-                                Logo Design
-                            </span>
-
-                            <h3>
-                                Sram Organic Mushrooms
-                            </h3>
-
-                        </div>
-
-                        <span class="project-number">
-                            01
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PROJECT 2 - MENU POSTER -->
-
-                <div class="portfolio-card">
-
-                    <div class="portfolio-image">
-
-                        <img src="images/poster.png" alt="Veera Restaurant Menu Poster Design">
-
-                    </div>
-
-                    <div class="portfolio-info">
-
-                        <div>
-
-                            <span>
-                                Menu & Poster
-                            </span>
-
-                            <h3>
-                                Veera Restaurant
-                            </h3>
-
-                        </div>
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PROJECT 3 - WEBSITE -->
-
-                <!-- PROJECT 4 - NATURE CRUNCH -->
-
-                <div class="portfolio-card">
-
-                    <div class="portfolio-image">
-
-                        <img src="images/project2.png" alt="Nature Crunch Dehydrated Fruits Website">
-
-                    </div>
-
-                    <div class="portfolio-info">
-
-                        <div>
-
-                            <span>
-                                Website Development
-                            </span>
-
-                            <h3>
-                                Nature Crunch
-                            </h3>
-
-                        </div>
-
-                        <span class="project-number">
-                            03
-                        </span>
-
-                    </div>
-
-                    <a href="https://bhargavikambam.github.io/vnr-dried-fruits/#products" target="_blank"
-                        rel="noopener noreferrer" class="project-view">
                         View Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        <i
+                            class="fa-solid
+                                   fa-arrow-up-right-from-square
+                                   text-[#B78A52]">
+
+                        </i>
+
                     </a>
 
                 </div>
- <div class="portfolio-card">
 
-                <div class="portfolio-image">
+            </article>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <article
+                class="project-card
+                       service-card
+                       reveal
+                       overflow-hidden
+                       rounded-3xl
+                       border border-black/10
+                       bg-[#F7F5F0]">
+
+
+                <div
+                    class="project-image
+                           aspect-[16/11]
+                           overflow-hidden">
 
                     <img
                         src="images/project.png"
-                        alt="GreenBag E-commerce Website"
-                    >
+                        alt="GreenBag e-commerce website"
+                        loading="lazy"
+                        class="h-full w-full
+                               object-cover">
 
                 </div>
 
-                <div class="portfolio-info">
 
-                    <div>
+                <div class="p-5 sm:p-6">
 
-                        <span>
-                            Website Development
-                        </span>
+                    <p
+                        class="text-[9px]
+                               font-bold
+                               uppercase
+                               tracking-[.18em]
+                               text-[#A07443]">
 
-                        <h3>
-                            GreenBag E-commerce
-                        </h3>
+                        Website Development
 
-                    </div>
+                    </p>
 
-                    <span class="project-number">
-                        04
-                    </span>
+
+                    <h3
+                        class="mt-2
+                               text-lg
+                               font-bold
+                               sm:text-xl">
+
+                        GreenBag E-commerce
+
+                    </h3>
+
+
+                    <a
+                        href="https://greenbag-7anb.onrender.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="line-link
+                               mt-3
+                               inline-flex
+                               items-center
+                               gap-2
+                               text-sm
+                               font-bold">
+
+                        View Website
+
+                        <i
+                            class="fa-solid
+                                   fa-arrow-up-right-from-square
+                                   text-[#B78A52]">
+
+                        </i>
+
+                    </a>
 
                 </div>
 
-                <a
-                    href="https://greenbag-7anb.onrender.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="project-view"
-                >
-                    View Website
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-
-            </div>
-
-
-            </div>
-
-
-            <div class="portfolio-bottom">
-
-                <p>
-                    More projects coming soon.
-                </p>
-
-                <a href="https://www.instagram.com/HANU_DIGITALHUB/" target="_blank" rel="noopener noreferrer"
-                    class="text-link">
-                    See More On Instagram
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-            </div>
+            </article>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- =========================
-         CONTACT
-    ========================== -->
+<!-- =====================================================
+     CTA
+====================================================== -->
 
-    <section id="contact" class="section contact">
-
-        <div class="container contact-container">
-
-
-            <div class="contact-content">
-
-                <span class="section-label">
-                    LET'S CONNECT
-                </span>
+<section
+    class="py-20
+           sm:py-24
+           lg:py-32">
 
 
-                <h2>
-                    Have An Idea?
-                    <span>Let's Talk.</span>
+    <div
+        class="reveal
+               mx-auto
+               max-w-6xl
+               px-5 sm:px-6
+               lg:px-8">
+
+
+        <div
+            class="relative
+                   overflow-hidden
+                   rounded-[26px]
+                   bg-[#11110F]
+                   px-6 py-14
+                   text-center
+                   text-white
+                   sm:rounded-[2rem]
+                   sm:px-12
+                   sm:py-20">
+
+
+            <!-- DECORATION -->
+
+            <div
+                class="pointer-events-none
+                       absolute
+                       -right-20
+                       -top-20
+                       h-56 w-56
+                       rounded-full
+                       bg-[#B78A52]/20
+                       blur-3xl">
+
+            </div>
+
+
+            <div
+                class="pointer-events-none
+                       absolute
+                       -bottom-20
+                       -left-20
+                       h-56 w-56
+                       rounded-full
+                       bg-white/5
+                       blur-3xl">
+
+            </div>
+
+
+
+            <div
+                class="relative z-10">
+
+
+                <p
+                    class="text-[10px]
+                           font-bold
+                           uppercase
+                           tracking-[.2em]
+                           text-[#D8BD96]">
+
+                    Let's Create
+
+                </p>
+
+
+                <h2
+                    class="mt-4
+                           font-serif
+                           text-4xl
+                           font-semibold
+                           leading-tight
+                           sm:text-6xl">
+
+                    Ready to build something
+
+                    <em
+                        class="text-[#D8BD96]">
+
+                        great?
+
+                    </em>
+
                 </h2>
 
 
-                <p>
-                    Have a design project or business idea?
-                    We'd love to hear from you.
+                <p
+                    class="mx-auto mt-4
+                           max-w-xl
+                           text-sm
+                           leading-7
+                           text-white/45">
+
+                    Tell us what you're building
+                    and let's turn your idea into
+                    a professional digital experience.
+
                 </p>
 
 
-                <!-- Instagram -->
+                <a
+                    href="contact.html"
+                    class="pro-button
+                           mt-7
+                           inline-flex
+                           w-full
+                           items-center
+                           justify-center
+                           gap-3
+                           rounded-full
+                           bg-white
+                           px-7 py-4
+                           text-sm
+                           font-bold
+                           text-[#11110F]
+                           sm:w-auto">
 
-                <a href="https://www.instagram.com/hanudigitalhub/" target="_blank" class="contact-item">
+                    Start Your Project
 
-                    <div class="contact-icon">
+                    <i
+                        class="fa-solid
+                               fa-arrow-right">
 
-                        <i class="fa-brands fa-instagram"></i>
-
-                    </div>
-
-                    <div>
-
-                        <small>
-                            Instagram
-                        </small>
-
-                        <strong>
-                            @hanudigitalhub
-                        </strong>
-
-                    </div>
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-
-                <!-- Email -->
-
-                <a href="mailto:hanudigitalhubofficial@gmail.com" class="contact-item">
-
-                    <div class="contact-icon">
-
-                        <i class="fa-solid fa-envelope"></i>
-
-                    </div>
-
-                    <div>
-
-                        <small>
-                            Email
-                        </small>
-
-                        <strong>
-                            hanudigitalhubofficial@gmail.com
-                        </strong>
-
-                    </div>
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-
-            </div>
-
-
-            <!-- Contact CTA -->
-
-            <div class="contact-box">
-
-                <i class="fa-solid fa-sparkles"></i>
-
-                <h3>
-                    Let's Create Something
-                    <span>Great.</span>
-                </h3>
-
-                <p>
-                    Tell us about your idea and
-                    let's bring it to life.
-                </p>
-
-
-                <a href="mailto:hanudigitalhubofficial@gmail.com" class="btn btn-primary">
-
-                    Send Us An Email
-
-                    <i class="fa-solid fa-arrow-right"></i>
+                    </i>
 
                 </a>
 
             </div>
-
 
         </div>
 
-    </section>
+    </div>
 
-    <!-- =========================
+</section>
+
+
+
+</main>
+
+
+
+<!-- =====================================================
      FOOTER
-========================= -->
+====================================================== -->
 
-    <footer class="footer">
-
-        <div class="container footer-container">
-
-            <!-- Brand -->
-
-            <div class="footer-brand">
-
-                <a href="index.html" class="footer-logo">
-
-                    <div class="footer-logo-mark">
-                        <img src="images/logo.jpg" alt="Hanu Digital Hub Logo">
-                    </div>
-
-                    <div>
-                        <strong>
-                            HANU DIGITAL HUB
-                        </strong>
-
-                        <span>
-                            Creative Digital Studio
-                        </span>
-                    </div>
-
-                </a>
-
-                <p>
-                    Creative. Simple. Professional.
-                </p>
-
-            </div>
+<footer
+    class="bg-[#11110F]
+           text-white">
 
 
-            <!-- Quick Links -->
-
-            <div class="footer-links">
-
-                <h4>
-                    Quick Links
-                </h4>
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="services.html">
-                    Services
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </div>
+    <div
+        class="mx-auto grid
+               max-w-7xl
+               gap-10
+               px-5 py-14
+               sm:px-6
+               md:grid-cols-3
+               lg:px-8">
 
 
-            <!-- Connect -->
+        <!-- BRAND -->
 
-            <div class="footer-connect">
+        <div>
 
-                <h4>
-                    Let's Connect
-                </h4>
 
-                <a href="https://www.instagram.com/HANU_DIGITALHUB/" target="_blank" rel="noopener noreferrer">
+            <a
+                href="index.html"
+                class="flex items-center
+                       gap-3">
 
-                    <i class="fa-brands fa-instagram"></i>
 
-                    Instagram
+                <img
+                    src="images/logo.jpg"
+                    alt="Hanu Digital Hub"
+                    class="h-11 w-11
+                           rounded-xl
+                           object-cover">
 
-                </a>
+                <div>
 
-                <a href="mailto:hanudigitalhubofficial@gmail.com">
+                    <strong
+                        class="block
+                               text-[11px]
+                               tracking-[.17em]">
 
-                    <i class="fa-solid fa-envelope"></i>
+                        HANU DIGITAL HUB
 
-                    Email Us
+                    </strong>
 
-                </a>
 
-            </div>
+                    <small
+                        class="text-white/40">
+
+                        Creative Digital Studio
+
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <p
+                class="mt-5
+                       max-w-sm
+                       text-sm
+                       leading-7
+                       text-white/40">
+
+                Creative websites, branding and
+                digital design made to help your
+                brand look professional and
+                memorable.
+
+            </p>
 
         </div>
 
 
-        <!-- Bottom -->
 
-        <div class="footer-bottom">
+        <!-- EXPLORE -->
 
-            <div class="container footer-bottom-inner">
+        <div>
 
-                <p>
-                    © 2026 Hanu Digital Hub
-                </p>
 
-                <span>
-                    All rights reserved.
-                </span>
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
 
-            </div>
+                Explore
+
+            </h4>
+
+
+            <a
+                href="index.html"
+                class="block py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                Home
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="block py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                About
+
+            </a>
+
+
+            <a
+                href="services.html"
+                class="block py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                Services
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="block py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                Contact
+
+            </a>
 
         </div>
 
-    </footer>
+
+
+        <!-- CONNECT -->
+
+        <div>
+
+
+            <h4
+                class="mb-4
+                       text-[10px]
+                       font-bold
+                       uppercase
+                       tracking-[.2em]
+                       text-[#D8BD96]">
+
+                Connect
+
+            </h4>
+
+
+            <a
+                href="https://www.instagram.com/HANU_DIGITALHUB/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center
+                       gap-2 py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                <i
+                    class="fa-brands
+                           fa-instagram">
+
+                </i>
+
+                Instagram
+
+                <i
+                    class="fa-solid
+                           fa-arrow-up-right-from-square
+                           text-[9px]">
+
+                </i>
+
+            </a>
+
+
+            <a
+                href="mailto:hanudigitalhubofficial@gmail.com"
+                class="mt-1 flex items-center
+                       gap-2 py-1.5
+                       text-sm
+                       text-white/45
+                       transition
+                       hover:text-white">
+
+                <i
+                    class="fa-solid
+                           fa-envelope">
+
+                </i>
+
+                Email
+
+                <i
+                    class="fa-solid
+                           fa-arrow-up-right-from-square
+                           text-[9px]">
+
+                </i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- COPYRIGHT -->
+
+    <div
+        class="border-t
+               border-white/10">
+
+
+        <div
+            class="mx-auto flex
+                   max-w-7xl
+                   flex-col
+                   gap-2
+                   px-5 py-5
+                   text-xs
+                   text-white/30
+                   sm:flex-row
+                   sm:items-center
+                   sm:justify-between
+                   sm:px-6
+                   lg:px-8">
+
+
+            <span>
+
+                ©
+                <span id="year"></span>
+                Hanu Digital Hub
+
+            </span>
+
+
+            <span>
+
+                All rights reserved.
+
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+    /* =================================================
+       PRELOADER
+    ================================================= */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            const preloader =
+                document.getElementById(
+                    "preloader"
+                );
+
+            setTimeout(
+                function () {
+
+                    preloader.classList.add(
+                        "hide"
+                    );
+
+                },
+                400
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       MOBILE MENU
+    ================================================= */
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+    const mobileMenu =
+        document.getElementById(
+            "mobileMenu"
+        );
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            const open =
+                mobileMenu.classList.toggle(
+                    "open"
+                );
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                open
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       CLOSE MOBILE MENU
+    ================================================= */
+
+    document
+        .querySelectorAll(".mobile-link")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        mobileMenu.classList.remove(
+                            "open"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       SCROLL REVEAL
+    ================================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.10
+            }
+
+        );
+
+
+    revealElements.forEach(
+        function (element) {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+
+    /* =================================================
+       CURRENT YEAR
+    ================================================= */
+
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
+
+
+
+    /* =================================================
+       BUTTON MOVEMENT
+    ================================================= */
+
+    document
+        .querySelectorAll(".pro-button")
+        .forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "mousemove",
+                    function (event) {
+
+                        if (
+                            window.innerWidth < 768
+                        ) {
+                            return;
+                        }
+
+
+                        const rect =
+                            button.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left -
+                            rect.width / 2;
+
+
+                        const y =
+                            event.clientY -
+                            rect.top -
+                            rect.height / 2;
+
+
+                        button.style.transform =
+                            `translate(
+                                ${x * .03}px,
+                                ${y * .03}px
+                            )`;
+
+                    }
+                );
+
+
+                button.addEventListener(
+                    "mouseleave",
+                    function () {
+
+                        button.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
+
+
+
+    /* =================================================
+       ESCAPE CLOSE
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                mobileMenu.classList.remove(
+                    "open"
+                );
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+</script>
 
 
 </body>
